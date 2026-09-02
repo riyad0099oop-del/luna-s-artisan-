@@ -1,0 +1,208 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+
+/*
+ * Loleta Store — نظام تصميم عضوي فاخر
+ * خمري دافئ + أخضر زيتوني ناعم + خلفية كريمية
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) + 16px);
+  --radius-3xl: calc(var(--radius) + 28px);
+  --radius-4xl: calc(var(--radius) + 44px);
+
+  --font-sans: "Tajawal", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Tajawal", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-deep: var(--secondary-deep);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 1.5rem;
+
+  /* الخلفية الأساسية: أوف وايت دافئ */
+  --background: #F8F4EE;
+  
+  /* النص الأساسي: أسود ناعم / رمادي غامق */
+  --foreground: #2B2B2B;
+
+  /* الكروت: كريمي بيج ناعم */
+  --card: #F4EEE6;
+  --card-foreground: #2A2A2A;
+  
+  --popover: #F4EEE6;
+  --popover-foreground: #2A2A2A;
+
+  /* أحمر خمري / طوبي */
+  --primary: #9E3443;
+  --primary-foreground: #F8F4EE;
+  --primary-deep: #7F2735;
+
+  /* أخضر زيتوني */
+  --secondary: #B8C28A;
+  --secondary-foreground: #2A2A2A;
+  --secondary-deep: #9DA873;
+
+  /* لون بيج فاتح للاكسنت */
+  --muted: #F3E4E2;
+  --muted-foreground: #6B655D;
+
+  --accent: #E9DDCE;
+  --accent-foreground: #2A2A2A;
+
+  --border: #E8EDDA;
+  --input: #F3E4E2;
+  --ring: #A8B65A;
+
+  /* زجاج عضوي دافئ */
+  --glass-bg: rgba(243, 235, 221, 0.65); /* Soft cream slightly transparent */
+  --glass-bg-olive: rgba(168, 182, 90, 0.15);
+  --glass-bg-burgundy: rgba(166, 58, 70, 0.08);
+  --glass-border: rgba(233, 221, 206, 0.8); /* Beige accent */
+
+  /* ظلال ناعمة دافئة */
+  --shadow-soft: 0 4px 20px rgba(42, 42, 42, 0.04), 0 14px 40px rgba(42, 42, 42, 0.03);
+  --shadow-float: 0 10px 30px rgba(166, 58, 70, 0.08), 0 34px 70px -14px rgba(168, 182, 90, 0.15);
+  --shadow-press: 0 2px 10px rgba(42, 42, 42, 0.08);
+
+  --gradient-henna: linear-gradient(135deg, #A63A46, #D16A74);
+  --gradient-cream: linear-gradient(180deg, #F8F4EE 0%, #F3EBDD 100%);
+
+  --ease-organic: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-background);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-weight: 700;
+  }
+
+  ::selection {
+    background: rgba(168, 182, 90, 0.3);
+  }
+}
+
+/* ===== أدوات مخصصة ===== */
+
+@utility glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility glass-olive {
+  background: var(--glass-bg-olive);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(184, 194, 138, 0.2);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility glass-burgundy {
+  background: var(--glass-bg-burgundy);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(158, 52, 67, 0.15);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility text-henna-gradient {
+  background: var(--gradient-henna);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility bg-cream-aura {
+  background: var(--background);
+}
+
+@utility shadow-float {
+  box-shadow: var(--shadow-float);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility organic-pulse {
+  transition:
+    box-shadow 0.45s var(--ease-organic),
+    transform 0.35s var(--ease-organic),
+    background-color 0.25s var(--ease-organic),
+    color 0.25s var(--ease-organic);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow: 0 0 0 6px rgba(184, 194, 138, 0.2);
+    }
+  }
+
+  &:active {
+    transform: scale(0.97);
+    box-shadow: var(--shadow-press);
+  }
+}
+
+@utility line-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 100%;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: inline-end;
+    transition: transform 0.4s var(--ease-organic);
+    border-radius: 2px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: inline-start;
+    }
+  }
+}
