@@ -32,7 +32,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
       <div className="relative mb-3 sm:mb-4 aspect-[4/5] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-muted/40 isolate">
         {/* Soft decorative background shape inside image container */}
         <div className="absolute inset-0 bg-primary/5 -z-10 mix-blend-multiply" />
-        
+
         <motion.img
           initial={{ opacity: 0.8, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -61,17 +61,25 @@ export function ProductCard({ product, index }: ProductCardProps) {
             }}
             className="flex h-9 sm:h-11 w-full items-center justify-center gap-1.5 sm:gap-2 rounded-lg sm:rounded-xl bg-primary/90 backdrop-blur-md md:bg-primary text-xs sm:text-sm font-bold text-white shadow-lg hover:bg-primary-deep transition-colors active:scale-95"
           >
-            <Plus className="size-3.5 sm:size-4" strokeWidth={2.5} /> <span className="hidden sm:inline">إضافة للسلة</span><span className="sm:hidden">إضافة</span>
+            <Plus className="size-3.5 sm:size-4" strokeWidth={2.5} />{" "}
+            <span className="hidden sm:inline">إضافة للسلة</span>
+            <span className="sm:hidden">إضافة</span>
           </button>
         </div>
       </div>
       <div className="px-1">
-        <h3 className="text-sm sm:text-base font-bold text-foreground line-clamp-1">{product.name}</h3>
-        <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs font-medium text-muted-foreground line-clamp-1">{product.note}</p>
+        <h3 className="text-sm sm:text-base font-bold text-foreground line-clamp-1">
+          {product.name}
+        </h3>
+        <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs font-medium text-muted-foreground line-clamp-1">
+          {product.note}
+        </p>
         <div className="mt-2 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold">
           <span className="text-primary text-sm sm:text-base">{product.price}</span>
           {product.oldPrice && (
-            <span className="text-[10px] sm:text-xs text-muted-foreground/60 line-through decoration-muted-foreground/40">{product.oldPrice}</span>
+            <span className="text-[10px] sm:text-xs text-muted-foreground/60 line-through decoration-muted-foreground/40">
+              {product.oldPrice}
+            </span>
           )}
         </div>
       </div>

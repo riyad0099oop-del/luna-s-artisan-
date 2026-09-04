@@ -4,7 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 /*
  * Loleta Store — نظام تصميم عضوي فاخر
  * خمري دافئ + أخضر زيتوني ناعم + خلفية كريمية
@@ -47,38 +46,38 @@
   --radius: 1.5rem;
 
   /* الخلفية الأساسية: أوف وايت دافئ */
-  --background: #F8F4EE;
-  
+  --background: #f8f4ee;
+
   /* النص الأساسي: أسود ناعم / رمادي غامق */
-  --foreground: #2B2B2B;
+  --foreground: #2b2b2b;
 
   /* الكروت: كريمي بيج ناعم */
-  --card: #F4EEE6;
-  --card-foreground: #2A2A2A;
-  
-  --popover: #F4EEE6;
-  --popover-foreground: #2A2A2A;
+  --card: #f4eee6;
+  --card-foreground: #2a2a2a;
+
+  --popover: #f4eee6;
+  --popover-foreground: #2a2a2a;
 
   /* أحمر خمري / طوبي */
-  --primary: #9E3443;
-  --primary-foreground: #F8F4EE;
-  --primary-deep: #7F2735;
+  --primary: #9e3443;
+  --primary-foreground: #f8f4ee;
+  --primary-deep: #7f2735;
 
   /* أخضر زيتوني */
-  --secondary: #B8C28A;
-  --secondary-foreground: #2A2A2A;
-  --secondary-deep: #9DA873;
+  --secondary: #b8c28a;
+  --secondary-foreground: #2a2a2a;
+  --secondary-deep: #9da873;
 
   /* لون بيج فاتح للاكسنت */
-  --muted: #F3E4E2;
-  --muted-foreground: #6B655D;
+  --muted: #f3e4e2;
+  --muted-foreground: #6b655d;
 
-  --accent: #E9DDCE;
-  --accent-foreground: #2A2A2A;
+  --accent: #e9ddce;
+  --accent-foreground: #2a2a2a;
 
-  --border: #E8EDDA;
-  --input: #F3E4E2;
-  --ring: #A8B65A;
+  --border: #e8edda;
+  --input: #f3e4e2;
+  --ring: #a8b65a;
 
   /* زجاج عضوي دافئ */
   --glass-bg: rgba(243, 235, 221, 0.65); /* Soft cream slightly transparent */
@@ -91,8 +90,8 @@
   --shadow-float: 0 10px 30px rgba(166, 58, 70, 0.08), 0 34px 70px -14px rgba(168, 182, 90, 0.15);
   --shadow-press: 0 2px 10px rgba(42, 42, 42, 0.08);
 
-  --gradient-henna: linear-gradient(135deg, #A63A46, #D16A74);
-  --gradient-cream: linear-gradient(180deg, #F8F4EE 0%, #F3EBDD 100%);
+  --gradient-henna: linear-gradient(135deg, #a63a46, #d16a74);
+  --gradient-cream: linear-gradient(180deg, #f8f4ee 0%, #f3ebdd 100%);
 
   --ease-organic: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -115,7 +114,9 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-weight: 700;
   }
 

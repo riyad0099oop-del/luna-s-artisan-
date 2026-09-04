@@ -45,15 +45,15 @@ const generateBrandProducts = (brandName: string): Product[] => [
 
 function BrandPage() {
   const { brandId } = Route.useParams();
-  
+
   // تنسيق اسم الشركة للعرض
-  const brandName = brandId.replace("-", " ").replace(/\b\w/g, l => l.toUpperCase());
+  const brandName = brandId.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase());
   const products = generateBrandProducts(brandName);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream-aura pb-20">
       <Header />
-      
+
       <main className="mx-auto max-w-6xl px-5 pt-32 md:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -70,7 +70,7 @@ function BrandPage() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
           {products.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}

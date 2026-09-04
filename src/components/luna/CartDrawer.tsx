@@ -1,24 +1,18 @@
-﻿import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
+import { useNavigate } from "@tanstack/react-router";
 
 export function CartDrawer() {
-  const { isCartOpen, closeCart, items, updateQuantity, removeFromCart, totalItems, subtotal } = useCart();
+  const { isCartOpen, closeCart, items, updateQuantity, removeFromCart, totalItems, subtotal } =
+    useCart();
+
+  const navigate = useNavigate();
 
   const handleCheckout = () => {
-    toast.success("سيتم استكمال بيانات الطلب في الخطوة التالية", {
-      style: {
-        background: "#F8F4EE",
-        color: "#9E3443",
-        border: "1px solid #F3E4E2",
-        borderRadius: "1rem",
-        fontWeight: "bold",
-        fontFamily: "Tajawal",
-      },
-      position: "bottom-center"
-    });
-    // Further checkout logic will be implemented here
+    closeCart();
+    navigate({ to: "/checkout" });
   };
 
   return (
@@ -102,8 +96,12 @@ export function CartDrawer() {
                       {/* Info */}
                       <div className="flex flex-col flex-1 justify-between py-1">
                         <div>
-                          <h4 className="font-bold text-foreground line-clamp-1">{item.product.name}</h4>
-                          <p className="text-sm font-medium text-primary mt-1">{item.product.price}</p>
+                          <h4 className="font-bold text-foreground line-clamp-1">
+                            {item.product.name}
+                          </h4>
+                          <p className="text-sm font-medium text-primary mt-1">
+                            {item.product.price}
+                          </p>
                         </div>
 
                         {/* Controls */}
@@ -115,7 +113,9 @@ export function CartDrawer() {
                             >
                               <Minus className="size-4" strokeWidth={2.5} />
                             </button>
-                            <span className="font-bold text-sm w-4 text-center">{item.quantity}</span>
+                            <span className="font-bold text-sm w-4 text-center">
+                              {item.quantity}
+                            </span>
                             <button
                               onClick={() => updateQuantity(item.product.name, 1)}
                               className="text-foreground/70 hover:text-primary transition-colors active:scale-90"
@@ -123,7 +123,7 @@ export function CartDrawer() {
                               <Plus className="size-4" strokeWidth={2.5} />
                             </button>
                           </div>
-                          
+
                           <button
                             onClick={() => removeFromCart(item.product.name)}
                             className="p-2 text-foreground/40 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors active:scale-90"
@@ -143,9 +143,11 @@ export function CartDrawer() {
               <div className="p-6 bg-white border-t border-border shadow-[0_-10px_30px_rgba(0,0,0,0.02)]">
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-foreground/70 font-bold text-lg">المجموع الفرعي</span>
-                  <span className="text-2xl font-bold text-primary">{subtotal} <span className="text-sm">ر.س</span></span>
+                  <span className="text-2xl font-bold text-primary">
+                    {subtotal} <span className="text-sm">ر.س</span>
+                  </span>
                 </div>
-                
+
                 <div className="flex flex-col gap-3">
                   <button
                     onClick={handleCheckout}

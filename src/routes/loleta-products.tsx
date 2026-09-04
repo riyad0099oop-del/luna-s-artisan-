@@ -12,7 +12,10 @@ export const Route = createFileRoute("/loleta-products")({
   head: () => ({
     meta: [
       { title: "منتجات لوليتا — Loleta Store" },
-      { name: "description", content: "اكتشفي منتجات Loleta الخاصة والمميزة للعناية بالبشرة والجمال الطبيعي." },
+      {
+        name: "description",
+        content: "اكتشفي منتجات Loleta الخاصة والمميزة للعناية بالبشرة والجمال الطبيعي.",
+      },
     ],
   }),
   component: LoletaProducts,
@@ -34,14 +37,19 @@ const PRODUCTS: Product[] = [
     tag: "جديد",
   },
   { name: "زيت الترطيب العضوي", note: "مزيج الزيوت الطبيعية", price: "٦٥ ر.س", image: productCone },
-  { name: "صابون زبدة الشيا", note: "مصنوع يدوياً للترطيب العميق", price: "٣٢ ر.س", image: productSoap },
+  {
+    name: "صابون زبدة الشيا",
+    note: "مصنوع يدوياً للترطيب العميق",
+    price: "٣٢ ر.س",
+    image: productSoap,
+  },
 ];
 
 function LoletaProducts() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream-aura pb-20">
       <Header />
-      
+
       <main className="mx-auto max-w-6xl px-5 pt-32 md:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -53,7 +61,8 @@ function LoletaProducts() {
             منتجات <span className="text-secondary">لوليتا</span>
           </h1>
           <p className="mt-4 text-sm font-light leading-relaxed text-muted-foreground md:max-w-xl md:text-base">
-            مجموعتنا الحصرية من المنتجات المصنوعة بكل حب واهتمام لتبرز جمالك الطبيعي وتحافظ على نضارة بشرتك.
+            مجموعتنا الحصرية من المنتجات المصنوعة بكل حب واهتمام لتبرز جمالك الطبيعي وتحافظ على
+            نضارة بشرتك.
           </p>
         </motion.div>
 

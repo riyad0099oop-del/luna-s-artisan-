@@ -24,7 +24,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 // Helper to parse localized price strings like "١٢٠ ر.س" to numbers
 const parsePrice = (priceStr: string): number => {
   // Convert Arabic numerals to English numerals
-  const englishStr = priceStr.replace(/[٠-٩]/g, d => "0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)]);
+  const englishStr = priceStr.replace(/[٠-٩]/g, (d) => "0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)]);
   // Extract the number
   const match = englishStr.match(/\d+/);
   return match ? parseInt(match[0], 10) : 0;
@@ -63,12 +63,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const existing = prev.find((item) => item.product.name === product.name);
       if (existing) {
         return prev.map((item) =>
-          item.product.name === product.name ? { ...item, quantity: item.quantity + 1 } : item
+          item.product.name === product.name ? { ...item, quantity: item.quantity + 1 } : item,
         );
       }
       return [...prev, { product, quantity: 1 }];
     });
-    
+
     toast.success("تمت إضافة المنتج إلى السلة", {
       style: {
         background: "#F8F4EE",
@@ -78,7 +78,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         fontWeight: "bold",
         fontFamily: "Tajawal",
       },
-      position: "bottom-center"
+      position: "bottom-center",
     });
   };
 
@@ -94,12 +94,15 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
           return { ...item, quantity: newQ > 0 ? newQ : 1 };
         }
         return item;
-      })
+      }),
     );
   };
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = items.reduce((sum, item) => sum + (parsePrice(item.product.price) * item.quantity), 0);
+  const subtotal = items.reduce(
+    (sum, item) => sum + parsePrice(item.product.price) * item.quantity,
+    0,
+  );
 
   return (
     <CartContext.Provider

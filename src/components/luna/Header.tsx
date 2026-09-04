@@ -44,7 +44,10 @@ export function Header() {
         <ul className="hidden items-center gap-8 text-sm font-light md:flex">
           {LINKS.map((l) => (
             <li key={l.to}>
-              <Link to={l.to} className="line-underline text-foreground/80 hover:text-foreground [&.active]:text-foreground [&.active]:font-normal">
+              <Link
+                to={l.to}
+                className="line-underline text-foreground/80 hover:text-foreground [&.active]:text-foreground [&.active]:font-normal"
+              >
                 {l.label}
               </Link>
             </li>

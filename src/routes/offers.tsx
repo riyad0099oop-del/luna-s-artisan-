@@ -1,4 +1,3 @@
-
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Header } from "@/components/luna/Header";
@@ -12,15 +11,61 @@ export const Route = createFileRoute("/offers")({
 });
 
 const LOLETA_OFFERS: Product[] = [
-  { name: "باقة النضارة المتكاملة", note: "سيروم + كريم ترطيب", price: "١٩٩ ر.س", oldPrice: "٢٦٥ ر.س", image: productOil, tag: "عرض خاص" },
-  { name: "مجموعة الطين والعناية", note: "ماسك + صابون شيا", price: "٩٩ ر.س", oldPrice: "١١٧ ر.س", image: productBlend, tag: "٢٠٪ خصم" },
+  {
+    name: "باقة النضارة المتكاملة",
+    note: "سيروم + كريم ترطيب",
+    price: "١٩٩ ر.س",
+    oldPrice: "٢٦٥ ر.س",
+    image: productOil,
+    tag: "عرض خاص",
+  },
+  {
+    name: "مجموعة الطين والعناية",
+    note: "ماسك + صابون شيا",
+    price: "٩٩ ر.س",
+    oldPrice: "١١٧ ر.س",
+    image: productBlend,
+    tag: "٢٠٪ خصم",
+  },
 ];
 
 const BRANDS_OFFERS: Product[] = [
-  { name: "غسول يومي عميق", note: "للبشرة الدهنية", price: "١٢٠ ر.س", oldPrice: "١٥٠ ر.س", image: productOil, tag: "خصم", brand: "Bioderma" },
-  { name: "تونر التفتيح", note: "توحيد لون البشرة", price: "٨٥ ر.س", oldPrice: "١٠٥ ر.س", image: productBlend, tag: "خصم", brand: "Byphasse" },
-  { name: "كريم الترطيب الفائق", note: "مع فيتامين هـ", price: "١٤٠ ر.س", oldPrice: "١٧٠ ر.س", image: productOil, tag: "خصم", brand: "Bio Balance" },
-  { name: "سيروم الكولاجين", note: "لمقاومة التجاعيد", price: "٢١٠ ر.س", oldPrice: "٢٨٠ ر.س", image: productBlend, tag: "٢٥٪ خصم", brand: "Cavali" },
+  {
+    name: "غسول يومي عميق",
+    note: "للبشرة الدهنية",
+    price: "١٢٠ ر.س",
+    oldPrice: "١٥٠ ر.س",
+    image: productOil,
+    tag: "خصم",
+    brand: "Bioderma",
+  },
+  {
+    name: "تونر التفتيح",
+    note: "توحيد لون البشرة",
+    price: "٨٥ ر.س",
+    oldPrice: "١٠٥ ر.س",
+    image: productBlend,
+    tag: "خصم",
+    brand: "Byphasse",
+  },
+  {
+    name: "كريم الترطيب الفائق",
+    note: "مع فيتامين هـ",
+    price: "١٤٠ ر.س",
+    oldPrice: "١٧٠ ر.س",
+    image: productOil,
+    tag: "خصم",
+    brand: "Bio Balance",
+  },
+  {
+    name: "سيروم الكولاجين",
+    note: "لمقاومة التجاعيد",
+    price: "٢١٠ ر.س",
+    oldPrice: "٢٨٠ ر.س",
+    image: productBlend,
+    tag: "٢٥٪ خصم",
+    brand: "Cavali",
+  },
 ];
 
 function OffersPage() {
@@ -28,9 +73,15 @@ function OffersPage() {
     <div className="relative min-h-screen bg-background font-sans pb-20">
       <Header />
       <main className="mx-auto max-w-6xl px-5 pt-32 md:pt-40">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">أحدث العروض</h1>
-          <p className="text-muted-foreground font-medium">اكتشفي أفضل العروض الحصرية على منتجاتنا ومنتجات الشركات العالمية.</p>
+          <p className="text-muted-foreground font-medium">
+            اكتشفي أفضل العروض الحصرية على منتجاتنا ومنتجات الشركات العالمية.
+          </p>
         </motion.div>
 
         <section className="mb-20">
@@ -39,7 +90,9 @@ function OffersPage() {
             <div className="absolute -bottom-2 right-0 w-12 h-1 bg-primary rounded-full" />
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-            {LOLETA_OFFERS.map((p, i) => <ProductCard key={p.name} product={p} index={i} />)}
+            {LOLETA_OFFERS.map((p, i) => (
+              <ProductCard key={p.name} product={p} index={i} />
+            ))}
           </div>
         </section>
 
@@ -49,7 +102,9 @@ function OffersPage() {
             <div className="absolute -bottom-2 right-0 w-12 h-1 bg-primary rounded-full" />
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-            {BRANDS_OFFERS.map((p, i) => <ProductCard key={p.name} product={p} index={i} />)}
+            {BRANDS_OFFERS.map((p, i) => (
+              <ProductCard key={p.name} product={p} index={i} />
+            ))}
           </div>
         </section>
       </main>
