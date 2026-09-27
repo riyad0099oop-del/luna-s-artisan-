@@ -29,17 +29,14 @@ export function Header() {
       className="fixed inset-x-0 top-0 z-40 px-4 pt-4"
     >
       <nav className="bg-[#F3EBDD]/90 backdrop-blur-md shadow-sm border border-[#E9DDCE] mx-auto flex max-w-6xl items-center justify-between rounded-full px-4 py-3 md:px-6">
-        <Link to="/" className="flex items-center gap-2.5">
-          <img
-            src={logoUrl}
-            alt="شعار Loleta Store الرسمي"
-            className="size-11 rounded-full object-cover bg-white ring-1 ring-border/40"
-            loading="eager"
-          />
-          <span className="text-lg font-normal tracking-tight">
-            Loleta <span className="text-primary">Store</span>
-          </span>
-        </Link>
+        <Link to="/" className="flex items-center">
+            <img
+              src={logoUrl}
+              alt="Loleta Store Logo"
+              className="h-12 w-auto mix-blend-multiply object-contain"
+              loading="eager"
+            />
+          </Link>
 
         <ul className="hidden items-center gap-8 text-sm font-light md:flex">
           {LINKS.map((l) => (

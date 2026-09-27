@@ -25,27 +25,45 @@ const PRODUCTS: Product[] = [
   {
     name: "سيروم النضارة الفاخر",
     note: "خلاصة فيتامين سي والهيالورونيك",
-    price: "١٢٠ ر.س",
+    price: "١٢٠ ريال",
     image: productOil,
     tag: "الأكثر طلباً",
   },
   {
     name: "ماسك الطين الوردي",
     note: "لتنقية المسام وتنعيم البشرة",
-    price: "٨٥ ر.س",
+    price: "٨٥ ريال",
     image: productBlend,
     tag: "جديد",
   },
-  { name: "زيت الترطيب العضوي", note: "مزيج الزيوت الطبيعية", price: "٦٥ ر.س", image: productCone },
+  { name: "زيت الترطيب العضوي", note: "مزيج الزيوت الطبيعية", price: "٦٥ ريال", image: productCone },
   {
     name: "صابون زبدة الشيا",
     note: "مصنوع يدوياً للترطيب العميق",
-    price: "٣٢ ر.س",
+    price: "٣٢ ريال",
     image: productSoap,
   },
 ];
 
+import { useQuery } from "@tanstack/react-query";
+import { productService } from "@/services/productService";
+
 function LoletaProducts() {
+  const { data: dbProducts } = useQuery({
+    queryKey: ['products'],
+    queryFn: productService.getAll
+  });
+
+  const productsToDisplay: Product[] = dbProducts?.map(p => ({
+    name: p.name,
+    note: p.shortDescription || "",
+    price: p.price + " ريال",
+    oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
+    image: p.mainImage || productOil,
+    tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
+    id: p.id,
+  })) || PRODUCTS;
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream-aura pb-20">
       <Header />
@@ -67,8 +85,8 @@ function LoletaProducts() {
         </motion.div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-          {PRODUCTS.map((p, i) => (
-            <ProductCard key={p.name} product={p} index={i} />
+          {productsToDisplay.map((p, i) => (
+            <ProductCard key={p.id || p.name} product={p} index={i} />
           ))}
         </div>
       </main>

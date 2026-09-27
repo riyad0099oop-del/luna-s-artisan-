@@ -622,7 +622,7 @@ function CheckoutPage() {
                         <p className="text-muted-foreground text-sm">عدد القطع: {totalItems}</p>
                         <p className="font-bold text-lg mt-1">إجمالي الطلب</p>
                       </div>
-                      <p className="text-2xl font-bold text-primary">{subtotal} ر.س</p>
+                      <p className="text-2xl font-bold text-primary">{subtotal} ريال</p>
                     </div>
                   </div>
                 </div>

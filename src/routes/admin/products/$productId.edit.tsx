@@ -7,13 +7,17 @@ import { brandService } from '../../../services/brandService';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-export const Route = createFileRoute('/admin/products/new')({
+export const Route = createFileRoute('/admin/products/$productId/edit')({
   component: ProductForm,
 });
 
+import { useEffect } from 'react';
+
 function ProductForm() {
+  const { productId } = Route.useParams();
   const navigate = useNavigate();
   const { data: brands = [] } = useQuery({ queryKey: ['adminBrands'], queryFn: brandService.getAll });
+  const { data: product } = useQuery({ queryKey: ['adminProducts', productId], queryFn: () => productService.getById(productId) });
 
   const [formData, setFormData] = useState({
     name: '',
@@ -34,6 +38,29 @@ function ProductForm() {
     isVisible: true,
   });
 
+  useEffect(() => {
+    if (product) {
+      setFormData({
+        name: product.name,
+        slug: product.slug,
+        mainImage: product.mainImage,
+        shortDescription: product.shortDescription,
+        fullDescription: product.fullDescription,
+        price: product.price,
+        quantity: product.quantity,
+        type: product.type as 'loleta' | 'care',
+        brandId: product.brandId || '',
+        isNew: product.isNew,
+        isBestseller: product.isBestseller,
+        showInFeatured: product.showInFeatured,
+        hasOffer: product.hasOffer,
+        oldPrice: product.oldPrice || 0,
+        offerBadge: product.offerBadge,
+        isVisible: product.isVisible,
+      });
+    }
+  }, [product]);
+
   const [isSaving, setIsSaving] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,11 +72,10 @@ function ProductForm() {
     
     setIsSaving(true);
     try {
-      await productService.create({
+      await productService.update(productId, {
         ...formData,
-        additionalImages: [],
       });
-      toast.success('تم إضافة المنتج بنجاح');
+      toast.success('تم تحديث المنتج بنجاح');
       navigate({ to: '/admin/products' });
     } catch (err) {
       toast.error('حدث خطأ أثناء الحفظ');
@@ -186,7 +212,7 @@ function ProductForm() {
                   <div>
                     <label className="block text-sm font-bold mb-2">السعر قبل الخصم</label>
                     <input 
-                      type="text" 
+                      type="text"
                       inputMode="numeric"
                       value={formData.oldPrice || ''}
                       onChange={e => setFormData({...formData, oldPrice: Number(e.target.value) || 0})}

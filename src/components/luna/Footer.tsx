@@ -26,14 +26,13 @@ export function Footer() {
           <div className="flex flex-col items-start">
             <Link
               to="/"
-              className="flex items-center gap-3 mb-6 bg-white/10 p-2 pr-2 pl-6 rounded-full backdrop-blur-sm"
+              className="inline-block mb-6 bg-white p-3 rounded-2xl shadow-lg hover:-translate-y-1 transition-transform"
             >
               <img
                 src={logoUrl}
                 alt="Loleta Store"
-                className="h-12 w-12 rounded-full object-cover shadow-md"
+                className="h-16 w-auto object-contain"
               />
-              <span className="text-xl font-bold tracking-wide">Loleta Store</span>
             </Link>
             <p className="text-sm font-medium leading-relaxed text-white/90">
               منتجات مختارة بعناية لتمتعي ببشرة صحية ونضارة طبيعية كل يوم. الجمال العضوي بين يديك.
@@ -132,7 +131,23 @@ export function Footer() {
         </div>
 
         <div className="mt-16 border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-white/80">
-          <p>© {new Date().getFullYear()} Loleta Store. جميع الحقوق محفوظة.</p>
+          
+          <div className="flex flex-col gap-2">
+            <p>© {new Date().getFullYear()} Loleta Store. جميع الحقوق محفوظة.</p>
+            <p className="text-white/60 text-xs">
+              تم التطوير بواسطة{" "}
+              <a 
+                href="https://wa.me/967714191142" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-bold text-white hover:text-white/80 transition-colors inline-flex items-center gap-1"
+                title="تواصل معنا عبر واتساب"
+              >
+                شركة تكنيك
+                <span dir="ltr" className="inline-block text-[10px] bg-white/10 px-1.5 py-0.5 rounded-full ml-1">+967 714191142</span>
+              </a>
+            </p>
+          </div>
           <div className="flex gap-4 items-center">
             <Link to="/admin/login" className="hover:text-white transition-colors flex items-center gap-1 opacity-70 hover:opacity-100">
               دخول الإدارة

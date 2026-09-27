@@ -1,4 +1,4 @@
-﻿import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "sonner";
 import { type Product } from "@/components/luna/ProductCard";
 
@@ -21,10 +21,10 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// Helper to parse localized price strings like "١٢٠ ر.س" to numbers
+// Helper to parse localized price strings like "??? ????" to numbers
 const parsePrice = (priceStr: string): number => {
   // Convert Arabic numerals to English numerals
-  const englishStr = priceStr.replace(/[٠-٩]/g, (d) => "0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)]);
+  const englishStr = priceStr.replace(/[?-?]/g, (d) => "0123456789"["??????????".indexOf(d)]);
   // Extract the number
   const match = englishStr.match(/\d+/);
   return match ? parseInt(match[0], 10) : 0;
@@ -69,7 +69,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return [...prev, { product, quantity: 1 }];
     });
 
-    toast.success("تمت إضافة المنتج إلى السلة", {
+    toast.success("??? ????? ?????? ??? ?????", {
       style: {
         background: "#F8F4EE",
         color: "#9E3443",

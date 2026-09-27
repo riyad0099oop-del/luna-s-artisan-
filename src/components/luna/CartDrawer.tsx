@@ -144,7 +144,7 @@ export function CartDrawer() {
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-foreground/70 font-bold text-lg">المجموع الفرعي</span>
                   <span className="text-2xl font-bold text-primary">
-                    {subtotal} <span className="text-sm">ر.س</span>
+                    {subtotal} <span className="text-sm">ريال</span>
                   </span>
                 </div>
 

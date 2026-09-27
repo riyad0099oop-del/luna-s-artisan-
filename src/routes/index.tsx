@@ -6,6 +6,7 @@ import { Header } from "@/components/luna/Header";
 import { SilkReveal } from "@/components/luna/SilkReveal";
 import { ProductCard, type Product } from "@/components/luna/ProductCard";
 
+import logoUrl from "@/assets/loleta-logo.jpg";
 import heroImg from "@/assets/product-oil.jpg";
 import productBlend from "@/assets/product-blend.jpg";
 
@@ -28,17 +29,17 @@ const FEATURED_PRODUCTS: Product[] = [
   {
     name: "زيت النضارة الفائق",
     note: "عناية ليلية",
-    price: "١٢٠ ر.س",
+    price: "١٢٠ ريال",
     image: heroImg,
     tag: "الأكثر مبيعاً",
   },
-  { name: "سيروم الإشراقة", note: "تفتيح وتوحيد لون", price: "١٤٥ ر.س", image: productBlend },
-  { name: "كريم الترطيب العميق", note: "للبشرة الجافة", price: "٩٥ ر.س", image: heroImg },
+  { name: "سيروم الإشراقة", note: "تفتيح وتوحيد لون", price: "١٤٥ ريال", image: productBlend },
+  { name: "كريم الترطيب العميق", note: "للبشرة الجافة", price: "٩٥ ريال", image: heroImg },
   {
     name: "مجموعة العناية المتكاملة",
     note: "غسول + تونر + مرطب",
-    price: "٢٩٠ ر.س",
-    oldPrice: "٣٥٠ ر.س",
+    price: "٢٩٠ ريال",
+    oldPrice: "٣٥٠ ريال",
     image: productBlend,
     tag: "عرض",
   },
@@ -74,7 +75,25 @@ const FEATURES = [
   },
 ];
 
+import { useQuery } from "@tanstack/react-query";
+import { productService } from "@/services/productService";
+
 function HomePage() {
+  const { data: dbProducts } = useQuery({
+    queryKey: ['products'],
+    queryFn: productService.getAll
+  });
+
+  const productsToDisplay: Product[] = dbProducts?.slice(0, 4).map(p => ({
+    name: p.name,
+    note: p.shortDescription || "",
+    price: p.price + " ريال",
+    oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
+    image: p.mainImage || heroImg,
+    tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
+    id: p.id,
+  })) || FEATURED_PRODUCTS;
+
   return (
     <div className="relative min-h-screen overflow-x-hidden font-sans isolate">
       <SilkReveal />
@@ -187,11 +206,11 @@ function HomePage() {
             </motion.svg>
 
             {/* الصورة الرئيسية للمنتجات */}
-            <div className="relative z-10 w-64 md:w-80 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/50">
+            <div className="relative z-10 w-64 md:w-80 rounded-[3rem] bg-white overflow-hidden shadow-2xl border-4 border-white/50 p-4">
               <img
-                src={heroImg}
-                alt="منتجات العناية بالبشرة"
-                className="w-full h-auto object-cover"
+                src={logoUrl}
+                alt="Loleta Store"
+                className="w-full h-auto object-contain"
               />
             </div>
           </motion.div>
@@ -334,7 +353,7 @@ function HomePage() {
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-            {FEATURED_PRODUCTS.map((p, i) => (
+            {productsToDisplay.map((p, i) => (
               <ProductCard key={i} product={p} index={i} />
             ))}
           </div>

@@ -19,26 +19,26 @@ const generateBrandProducts = (brandName: string): Product[] => [
   {
     name: `${brandName} غسول الوجه`,
     note: "منظف لطيف للبشرة الحساسة",
-    price: "٨٥ ر.س",
+    price: "٨٥ ريال",
     image: productOil,
   },
   {
     name: `${brandName} كريم الترطيب`,
     note: "ترطيب عميق يدوم طويلاً",
-    price: "١٤٥ ر.س",
+    price: "١٤٥ ريال",
     image: productBlend,
     tag: "الأكثر مبيعاً",
   },
   {
     name: `${brandName} سيروم الإشراقة`,
     note: "لإضاءة وتوحيد لون البشرة",
-    price: "١٨٠ ر.س",
+    price: "١٨٠ ريال",
     image: productCone,
   },
   {
     name: `${brandName} تونر منعش`,
     note: "لاستعادة توازن البشرة",
-    price: "٧٥ ر.س",
+    price: "٧٥ ريال",
     image: productSoap,
   },
 ];

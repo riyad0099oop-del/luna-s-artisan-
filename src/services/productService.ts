@@ -1,77 +1,105 @@
-import { AdminProduct } from '../types/admin';
-import { LocalStorageService } from './baseService';
+import { supabase } from '../lib/supabase';
+import type { AdminProduct } from '../types/admin';
 
-const productStorage = new LocalStorageService<AdminProduct>('loleta_admin_products');
+// Helper: convert DB row (snake_case) to AdminProduct (camelCase)
+function toProduct(row: any): AdminProduct {
+  return {
+    id: row.id,
+    name: row.name,
+    slug: row.slug,
+    mainImage: row.main_image || '',
+    additionalImages: row.additional_images || [],
+    shortDescription: row.short_description || '',
+    fullDescription: row.full_description || '',
+    price: Number(row.price),
+    quantity: row.quantity,
+    type: row.type,
+    brandId: row.brand_id || undefined,
+    isNew: row.is_new,
+    isBestseller: row.is_bestseller,
+    showInFeatured: row.show_in_featured,
+    hasOffer: row.has_offer,
+    oldPrice: row.old_price ? Number(row.old_price) : undefined,
+    offerBadge: row.offer_badge || '',
+    isVisible: row.is_visible,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  };
+}
 
-productStorage.seed([
-  {
-    id: '1',
-    name: 'سيروم زبدة الشيا',
-    slug: 'shea-butter-serum',
-    mainImage: '/product-oil.jpg',
-    additionalImages: [],
-    shortDescription: 'ترطيب عميق وحماية للبشرة',
-    fullDescription: 'سيروم غني بزبدة الشيا يوفر ترطيباً عميقاً ويعيد للبشرة نضارتها...',
-    price: 32,
-    quantity: 15,
-    type: 'loleta',
-    isNew: true,
-    isBestseller: true,
-    showInFeatured: true,
-    hasOffer: true,
-    oldPrice: 45,
-    offerBadge: 'خصم مميز',
-    isVisible: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    id: '2',
-    name: 'غسول بيوديرما الأزرق',
-    slug: 'bioderma-blue',
-    mainImage: '/product-soap.jpg',
-    additionalImages: [],
-    shortDescription: 'غسول للبشرة الدهنية',
-    fullDescription: 'ينظف بعمق ويزيل الشوائب...',
-    price: 95,
-    quantity: 0,
-    type: 'care',
-    brandId: 'bioderma',
-    isNew: false,
-    isBestseller: true,
-    showInFeatured: false,
-    hasOffer: false,
-    isVisible: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  }
-]);
+// Helper: convert AdminProduct (camelCase) to DB row (snake_case)
+function toRow(product: Partial<AdminProduct>): Record<string, any> {
+  const row: Record<string, any> = {};
+  if (product.name !== undefined) row.name = product.name;
+  if (product.slug !== undefined) row.slug = product.slug;
+  if (product.mainImage !== undefined) row.main_image = product.mainImage;
+  if (product.additionalImages !== undefined) row.additional_images = product.additionalImages;
+  if (product.shortDescription !== undefined) row.short_description = product.shortDescription;
+  if (product.fullDescription !== undefined) row.full_description = product.fullDescription;
+  if (product.price !== undefined) row.price = product.price;
+  if (product.quantity !== undefined) row.quantity = product.quantity;
+  if (product.type !== undefined) row.type = product.type;
+  if (product.brandId !== undefined) row.brand_id = product.brandId || null;
+  if (product.isNew !== undefined) row.is_new = product.isNew;
+  if (product.isBestseller !== undefined) row.is_bestseller = product.isBestseller;
+  if (product.showInFeatured !== undefined) row.show_in_featured = product.showInFeatured;
+  if (product.hasOffer !== undefined) row.has_offer = product.hasOffer;
+  if (product.oldPrice !== undefined) row.old_price = product.oldPrice;
+  if (product.offerBadge !== undefined) row.offer_badge = product.offerBadge;
+  if (product.isVisible !== undefined) row.is_visible = product.isVisible;
+  return row;
+}
 
 export const productService = {
-  getAll: async () => {
-    await new Promise(r => setTimeout(r, 300));
-    return productStorage.getAll();
+  getAll: async (): Promise<AdminProduct[]> => {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    return (data || []).map(toProduct);
   },
-  getById: async (id: string) => {
-    await new Promise(r => setTimeout(r, 200));
-    return productStorage.getById(id);
+
+  getById: async (id: string): Promise<AdminProduct | undefined> => {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('id', id)
+      .single();
+    if (error) return undefined;
+    return toProduct(data);
   },
-  create: async (product: Omit<AdminProduct, 'id' | 'createdAt' | 'updatedAt'>) => {
-    await new Promise(r => setTimeout(r, 500));
-    const newProduct: AdminProduct = {
-      ...product,
-      id: Math.random().toString(36).substr(2, 9),
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-    return productStorage.create(newProduct);
+
+  create: async (product: Omit<AdminProduct, 'id' | 'createdAt' | 'updatedAt'>): Promise<AdminProduct> => {
+    const row = toRow(product);
+    const { data, error } = await supabase
+      .from('products')
+      .insert(row)
+      .select()
+      .single();
+    if (error) throw error;
+    return toProduct(data);
   },
-  update: async (id: string, updates: Partial<AdminProduct>) => {
-    await new Promise(r => setTimeout(r, 500));
-    return productStorage.update(id, { ...updates, updatedAt: new Date().toISOString() });
+
+  update: async (id: string, updates: Partial<AdminProduct>): Promise<AdminProduct | undefined> => {
+    const row = toRow(updates);
+    row.updated_at = new Date().toISOString();
+    const { data, error } = await supabase
+      .from('products')
+      .update(row)
+      .eq('id', id)
+      .select()
+      .single();
+    if (error) throw error;
+    return toProduct(data);
   },
-  delete: async (id: string) => {
-    await new Promise(r => setTimeout(r, 400));
-    return productStorage.delete(id);
-  }
+
+  delete: async (id: string): Promise<boolean> => {
+    const { error } = await supabase
+      .from('products')
+      .delete()
+      .eq('id', id);
+    if (error) throw error;
+    return true;
+  },
 };

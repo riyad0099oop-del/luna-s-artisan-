@@ -1,38 +1,97 @@
-import { AdminStoreSettings, AdminPaymentMethod } from '../types/admin';
-import { LocalStorageService } from './baseService';
-
-const settingsStorage = new LocalStorageService<AdminStoreSettings & { id: string }>('loleta_admin_settings');
-const paymentStorage = new LocalStorageService<AdminPaymentMethod>('loleta_admin_payments');
-
-settingsStorage.seed([
-  {
-    id: 'global',
-    storeName: 'Loleta Store',
-    logo: '/loleta-logo.jpg',
-    favicon: '/favicon.ico',
-    whatsapp: '967782939488',
-    phone: '967782939488',
-    email: 'info@loleta.com',
-    instagram: 'loleta.store',
-    address: 'صنعاء - اليمن',
-    currency: 'ر.س',
-    copyright: 'جميع الحقوق محفوظة لمتجر لوليتا 2026',
-  }
-]);
-
-paymentStorage.seed([
-  { id: '1', name: 'بنك الكريمي (حساب يمني)', accountNumber: '3002115602', isVisible: true },
-  { id: '2', name: 'بنك الكريمي (حساب سعودي)', accountNumber: '3102006916', isVisible: true },
-  { id: '3', name: 'جيب', accountNumber: '9331126', isVisible: true },
-]);
+import { supabase } from '../lib/supabase';
+import type { AdminStoreSettings, AdminPaymentMethod } from '../types/admin';
 
 export const settingsService = {
-  getStoreSettings: async () => {
-    return settingsStorage.getById('global')!;
+  getStoreSettings: async (): Promise<AdminStoreSettings & { id: string }> => {
+    const { data, error } = await supabase
+      .from('store_settings')
+      .select('*')
+      .eq('id', 'global')
+      .single();
+    
+    if (error) throw error;
+    
+    return {
+      id: data.id,
+      storeName: data.store_name || '',
+      logo: data.logo || '',
+      favicon: data.favicon || '',
+      whatsapp: data.whatsapp || '',
+      phone: data.phone || '',
+      email: data.email || '',
+      instagram: data.instagram || '',
+      address: data.address || '',
+      currency: data.currency || '',
+      copyright: data.copyright || '',
+      aboutText: data.about_text || '',
+      homeHeroTitle: data.home_hero_title || '',
+      homeHeroSubtitle: data.home_hero_subtitle || ''
+    };
   },
+
   updateStoreSettings: async (updates: Partial<AdminStoreSettings>) => {
-    return settingsStorage.update('global', updates);
+    const row: Record<string, any> = {};
+    if (updates.storeName !== undefined) row.store_name = updates.storeName;
+    if (updates.logo !== undefined) row.logo = updates.logo;
+    if (updates.favicon !== undefined) row.favicon = updates.favicon;
+    if (updates.whatsapp !== undefined) row.whatsapp = updates.whatsapp;
+    if (updates.phone !== undefined) row.phone = updates.phone;
+    if (updates.email !== undefined) row.email = updates.email;
+    if (updates.instagram !== undefined) row.instagram = updates.instagram;
+    if (updates.address !== undefined) row.address = updates.address;
+    if (updates.currency !== undefined) row.currency = updates.currency;
+    if (updates.copyright !== undefined) row.copyright = updates.copyright;
+    if (updates.aboutText !== undefined) row.about_text = updates.aboutText;
+    if (updates.homeHeroTitle !== undefined) row.home_hero_title = updates.homeHeroTitle;
+    if (updates.homeHeroSubtitle !== undefined) row.home_hero_subtitle = updates.homeHeroSubtitle;
+    
+    row.updated_at = new Date().toISOString();
+
+    const { data, error } = await supabase
+      .from('store_settings')
+      .update(row)
+      .eq('id', 'global')
+      .select()
+      .single();
+      
+    if (error) throw error;
+    return data;
   },
-  getPaymentMethods: async () => paymentStorage.getAll(),
-  updatePaymentMethod: async (id: string, updates: Partial<AdminPaymentMethod>) => paymentStorage.update(id, updates)
+
+  getPaymentMethods: async (): Promise<AdminPaymentMethod[]> => {
+    const { data, error } = await supabase
+      .from('payment_methods')
+      .select('*')
+      .order('created_at', { ascending: true });
+      
+    if (error) throw error;
+    
+    return (data || []).map(row => ({
+      id: row.id,
+      name: row.name,
+      logo: row.logo || undefined,
+      accountNumber: row.account_number,
+      accountType: row.account_type || undefined,
+      isVisible: row.is_visible
+    }));
+  },
+
+  updatePaymentMethod: async (id: string, updates: Partial<AdminPaymentMethod>) => {
+    const row: Record<string, any> = {};
+    if (updates.name !== undefined) row.name = updates.name;
+    if (updates.logo !== undefined) row.logo = updates.logo;
+    if (updates.accountNumber !== undefined) row.account_number = updates.accountNumber;
+    if (updates.accountType !== undefined) row.accountType = updates.accountType;
+    if (updates.isVisible !== undefined) row.is_visible = updates.isVisible;
+
+    const { data, error } = await supabase
+      .from('payment_methods')
+      .update(row)
+      .eq('id', id)
+      .select()
+      .single();
+      
+    if (error) throw error;
+    return data;
+  }
 };

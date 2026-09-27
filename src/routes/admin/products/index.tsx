@@ -108,7 +108,7 @@ function ProductsList() {
                         <span className="text-purple-600 font-bold bg-purple-50 px-2 py-1 rounded-lg text-xs">عناية</span>
                       )}
                     </td>
-                    <td className="p-4 font-bold">{product.price} ر.س</td>
+                    <td className="p-4 font-bold">{product.price} ريال</td>
                     <td className="p-4">
                       {product.quantity > 0 ? (
                         <span className="font-bold">{product.quantity}</span>
@@ -125,9 +125,9 @@ function ProductsList() {
                     </td>
                     <td className="p-4">
                       <div className="flex items-center gap-2">
-                        <button className="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors">
+                        <Link to="/admin/products/$productId/edit" params={{ productId: product.id }} className="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors inline-block">
                           <Edit2 className="size-4" />
-                        </button>
+                        </Link>
                         <button 
                           onClick={() => setDeleteId(product.id)}
                           className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"

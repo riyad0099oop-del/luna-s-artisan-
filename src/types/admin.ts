@@ -72,4 +72,7 @@ export interface AdminStoreSettings {
   address: string;
   currency: string;
   copyright: string;
+  aboutText?: string;
+  homeHeroTitle?: string;
+  homeHeroSubtitle?: string;
 }
