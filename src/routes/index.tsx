@@ -84,15 +84,17 @@ function HomePage() {
     queryFn: productService.getAll
   });
 
-  const productsToDisplay: Product[] = dbProducts?.slice(0, 4).map(p => ({
-    name: p.name,
-    note: p.shortDescription || "",
-    price: p.price + " ريال",
-    oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
-    image: p.mainImage || heroImg,
-    tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
-    id: p.id,
-  })) || FEATURED_PRODUCTS;
+  const productsToDisplay: Product[] = dbProducts
+    ?.filter(p => p.isVisible && (p.showInFeatured || p.type === 'loleta'))
+    .slice(0, 4).map(p => ({
+      name: p.name,
+      note: p.shortDescription || "",
+      price: p.price + " ريال",
+      oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
+      image: p.mainImage || heroImg,
+      tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
+      id: p.id,
+    })) || FEATURED_PRODUCTS;
 
   return (
     <div className="relative min-h-screen overflow-x-hidden font-sans isolate">

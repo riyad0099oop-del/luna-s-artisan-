@@ -54,15 +54,17 @@ function LoletaProducts() {
     queryFn: productService.getAll
   });
 
-  const productsToDisplay: Product[] = dbProducts?.map(p => ({
-    name: p.name,
-    note: p.shortDescription || "",
-    price: p.price + " ريال",
-    oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
-    image: p.mainImage || productOil,
-    tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
-    id: p.id,
-  })) || PRODUCTS;
+  const productsToDisplay: Product[] = dbProducts
+    ?.filter(p => p.type === 'loleta' && p.isVisible)
+    .map(p => ({
+      name: p.name,
+      note: p.shortDescription || "",
+      price: p.price + " ريال",
+      oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
+      image: p.mainImage || productOil,
+      tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
+      id: p.id,
+    })) || PRODUCTS;
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream-aura pb-20">
