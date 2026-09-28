@@ -68,10 +68,10 @@ export function ProductCard({ product, index }: ProductCardProps) {
         </div>
       </div>
       <div className="px-1">
-        <h3 className="text-sm sm:text-base font-bold text-foreground">
+        <h3 className="text-sm sm:text-base font-bold text-foreground truncate">
           {product.name}
         </h3>
-        <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs font-medium text-muted-foreground">
+        <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs font-medium text-muted-foreground line-clamp-2 break-words">
           {product.note}
         </p>
         <div className="mt-2 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold">
