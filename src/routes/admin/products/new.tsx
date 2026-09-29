@@ -152,6 +152,17 @@ function ProductForm() {
               </div>
 
               <div>
+                <label className="block text-sm font-bold mb-2">الوصف الكامل (تفاصيل المنتج)</label>
+                <textarea
+                  rows={5}
+                  value={formData.fullDescription}
+                  onChange={(e) => setFormData({ ...formData, fullDescription: e.target.value })}
+                  className="w-full bg-[#F8F4EE] border border-border rounded-xl px-4 py-2 focus:ring-2 focus:ring-primary/20 outline-none resize-vertical"
+                  placeholder="اكتب هنا التفاصيل الكاملة للمنتج لتظهر في صفحة تفاصيل المنتج..."
+                />
+              </div>
+
+              <div>
                 <label className="block text-sm font-bold mb-2">التصنيف</label>
                 <select
                   value={formData.type}
