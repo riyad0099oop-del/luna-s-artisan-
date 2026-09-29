@@ -70,21 +70,29 @@ export const productService = {
     product: Omit<AdminProduct, "id" | "createdAt" | "updatedAt">,
   ): Promise<AdminProduct> => {
     const row = toRow(product);
+    console.log("Attempting to insert row:", row);
     const { data, error } = await supabase.from("products").insert(row).select().single();
-    if (error) throw error;
+    if (error) {
+      console.error("Supabase Create Error:", error);
+      throw error;
+    }
     return toProduct(data);
   },
 
   update: async (id: string, updates: Partial<AdminProduct>): Promise<AdminProduct | undefined> => {
     const row = toRow(updates);
     row.updated_at = new Date().toISOString();
+    console.log("Attempting to update row:", row);
     const { data, error } = await supabase
       .from("products")
       .update(row)
       .eq("id", id)
       .select()
       .single();
-    if (error) throw error;
+    if (error) {
+      console.error("Supabase Update Error:", error);
+      throw error;
+    }
     return toProduct(data);
   },
 
