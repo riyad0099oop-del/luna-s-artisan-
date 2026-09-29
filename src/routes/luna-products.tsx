@@ -8,17 +8,17 @@ import productBlend from "@/assets/product-blend.jpg";
 import productOil from "@/assets/product-oil.jpg";
 import productSoap from "@/assets/product-soap.jpg";
 
-export const Route = createFileRoute("/loleta-products")({
+export const Route = createFileRoute("/luna-products")({
   head: () => ({
     meta: [
-      { title: "منتجات لوليتا — Loleta Store" },
+      { title: "منتجات لونا — Luna Store" },
       {
         name: "description",
-        content: "اكتشفي منتجات Loleta الخاصة والمميزة للعناية بالبشرة والجمال الطبيعي.",
+        content: "اكتشفي منتجات Luna الخاصة والمميزة للعناية بالبشرة والجمال الطبيعي.",
       },
     ],
   }),
-  component: LoletaProducts,
+  component: LunaProducts,
 });
 
 const PRODUCTS: Product[] = [
@@ -36,7 +36,12 @@ const PRODUCTS: Product[] = [
     image: productBlend,
     tag: "جديد",
   },
-  { name: "زيت الترطيب العضوي", note: "مزيج الزيوت الطبيعية", price: "٦٥ ريال", image: productCone },
+  {
+    name: "زيت الترطيب العضوي",
+    note: "مزيج الزيوت الطبيعية",
+    price: "٦٥ ريال",
+    image: productCone,
+  },
   {
     name: "صابون زبدة الشيا",
     note: "مصنوع يدوياً للترطيب العميق",
@@ -48,23 +53,24 @@ const PRODUCTS: Product[] = [
 import { useQuery } from "@tanstack/react-query";
 import { productService } from "@/services/productService";
 
-function LoletaProducts() {
+function LunaProducts() {
   const { data: dbProducts } = useQuery({
-    queryKey: ['products'],
-    queryFn: productService.getAll
+    queryKey: ["products"],
+    queryFn: productService.getAll,
   });
 
-  const productsToDisplay: Product[] = dbProducts
-    ?.filter(p => p.type === 'loleta' && p.isVisible)
-    .map(p => ({
-      name: p.name,
-      note: p.shortDescription || "",
-      price: p.price + " ريال",
-      oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
-      image: p.mainImage || productOil,
-      tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
-      id: p.id,
-    })) || PRODUCTS;
+  const productsToDisplay: Product[] =
+    dbProducts
+      ?.filter((p) => p.type === "luna" && p.isVisible)
+      .map((p) => ({
+        name: p.name,
+        note: p.shortDescription || "",
+        price: p.price + " ريال",
+        oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
+        image: p.mainImage || productOil,
+        tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
+        id: p.id,
+      })) || PRODUCTS;
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream-aura pb-20">
@@ -78,7 +84,7 @@ function LoletaProducts() {
           className="mb-12 text-center md:text-start"
         >
           <h1 className="text-3xl font-light tracking-tight md:text-5xl">
-            منتجات <span className="text-secondary">لوليتا</span>
+            منتجات <span className="text-secondary">لونا</span>
           </h1>
           <p className="mt-4 text-sm font-light leading-relaxed text-muted-foreground md:max-w-xl md:text-base">
             مجموعتنا الحصرية من المنتجات المصنوعة بكل حب واهتمام لتبرز جمالك الطبيعي وتحافظ على

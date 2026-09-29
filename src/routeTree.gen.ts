@@ -15,7 +15,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BranchesRouteImport } from './routes/branches'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as LoletaProductsRouteImport } from './routes/loleta-products'
+import { Route as LunaProductsRouteImport } from './routes/luna-products'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminBranchesRouteImport } from './routes/admin/branches'
@@ -24,6 +24,7 @@ import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as BrandsIndexRouteImport } from './routes/brands/index'
 import { Route as BrandsBrandIdRouteImport } from './routes/brands/$brandId'
+import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
 import { Route as AdminProductsIndexRouteImport } from './routes/admin/products/index'
 import { Route as AdminProductsNewRouteImport } from './routes/admin/products/new'
 import { Route as AdminProductsProductIdEditRouteImport } from './routes/admin/products/$productId.edit'
@@ -58,9 +59,9 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LoletaProductsRoute = LoletaProductsRouteImport.update({
-  id: '/loleta-products',
-  path: '/loleta-products',
+const LunaProductsRoute = LunaProductsRouteImport.update({
+  id: '/luna-products',
+  path: '/luna-products',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OffersRoute = OffersRouteImport.update({
@@ -103,6 +104,11 @@ const BrandsBrandIdRoute = BrandsBrandIdRouteImport.update({
   path: '/brands/$brandId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
+  id: '/products/$productId',
+  path: '/products/$productId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminProductsIndexRoute = AdminProductsIndexRouteImport.update({
   id: '/products/',
   path: '/products/',
@@ -127,13 +133,14 @@ export interface FileRoutesByFullPath {
   '/branches': typeof BranchesRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/loleta-products': typeof LoletaProductsRoute
+  '/luna-products': typeof LunaProductsRoute
   '/offers': typeof OffersRoute
   '/admin/branches': typeof AdminBranchesRoute
   '/admin/brands': typeof AdminBrandsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/brands/$brandId': typeof BrandsBrandIdRoute
+  '/products/$productId': typeof ProductsProductIdRoute
   '/admin/': typeof AdminIndexRoute
   '/brands/': typeof BrandsIndexRoute
   '/admin/products/new': typeof AdminProductsNewRoute
@@ -146,13 +153,14 @@ export interface FileRoutesByTo {
   '/branches': typeof BranchesRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/loleta-products': typeof LoletaProductsRoute
+  '/luna-products': typeof LunaProductsRoute
   '/offers': typeof OffersRoute
   '/admin/branches': typeof AdminBranchesRoute
   '/admin/brands': typeof AdminBrandsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/brands/$brandId': typeof BrandsBrandIdRoute
+  '/products/$productId': typeof ProductsProductIdRoute
   '/admin': typeof AdminIndexRoute
   '/brands': typeof BrandsIndexRoute
   '/admin/products/new': typeof AdminProductsNewRoute
@@ -167,13 +175,14 @@ export interface FileRoutesById {
   '/branches': typeof BranchesRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/loleta-products': typeof LoletaProductsRoute
+  '/luna-products': typeof LunaProductsRoute
   '/offers': typeof OffersRoute
   '/admin/branches': typeof AdminBranchesRoute
   '/admin/brands': typeof AdminBrandsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/brands/$brandId': typeof BrandsBrandIdRoute
+  '/products/$productId': typeof ProductsProductIdRoute
   '/admin/': typeof AdminIndexRoute
   '/brands/': typeof BrandsIndexRoute
   '/admin/products/new': typeof AdminProductsNewRoute
@@ -189,13 +198,14 @@ export interface FileRouteTypes {
     | '/branches'
     | '/checkout'
     | '/contact'
-    | '/loleta-products'
+    | '/luna-products'
     | '/offers'
     | '/admin/branches'
     | '/admin/brands'
     | '/admin/login'
     | '/admin/settings'
     | '/brands/$brandId'
+    | '/products/$productId'
     | '/admin/'
     | '/brands/'
     | '/admin/products/new'
@@ -208,13 +218,14 @@ export interface FileRouteTypes {
     | '/branches'
     | '/checkout'
     | '/contact'
-    | '/loleta-products'
+    | '/luna-products'
     | '/offers'
     | '/admin/branches'
     | '/admin/brands'
     | '/admin/login'
     | '/admin/settings'
     | '/brands/$brandId'
+    | '/products/$productId'
     | '/admin'
     | '/brands'
     | '/admin/products/new'
@@ -228,13 +239,14 @@ export interface FileRouteTypes {
     | '/branches'
     | '/checkout'
     | '/contact'
-    | '/loleta-products'
+    | '/luna-products'
     | '/offers'
     | '/admin/branches'
     | '/admin/brands'
     | '/admin/login'
     | '/admin/settings'
     | '/brands/$brandId'
+    | '/products/$productId'
     | '/admin/'
     | '/brands/'
     | '/admin/products/new'
@@ -249,9 +261,10 @@ export interface RootRouteChildren {
   BranchesRoute: typeof BranchesRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
-  LoletaProductsRoute: typeof LoletaProductsRoute
+  LunaProductsRoute: typeof LunaProductsRoute
   OffersRoute: typeof OffersRoute
   BrandsBrandIdRoute: typeof BrandsBrandIdRoute
+  ProductsProductIdRoute: typeof ProductsProductIdRoute
   BrandsIndexRoute: typeof BrandsIndexRoute
 }
 
@@ -299,11 +312,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/loleta-products': {
-      id: '/loleta-products'
-      path: '/loleta-products'
-      fullPath: '/loleta-products'
-      preLoaderRoute: typeof LoletaProductsRouteImport
+    '/luna-products': {
+      id: '/luna-products'
+      path: '/luna-products'
+      fullPath: '/luna-products'
+      preLoaderRoute: typeof LunaProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/offers': {
@@ -362,6 +375,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BrandsBrandIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products/$productId': {
+      id: '/products/$productId'
+      path: '/products/$productId'
+      fullPath: '/products/$productId'
+      preLoaderRoute: typeof ProductsProductIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/products/': {
       id: '/admin/products/'
       path: '/products'
@@ -417,9 +437,10 @@ const rootRouteChildren: RootRouteChildren = {
   BranchesRoute: BranchesRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
-  LoletaProductsRoute: LoletaProductsRoute,
+  LunaProductsRoute: LunaProductsRoute,
   OffersRoute: OffersRoute,
   BrandsBrandIdRoute: BrandsBrandIdRoute,
+  ProductsProductIdRoute: ProductsProductIdRoute,
   BrandsIndexRoute: BrandsIndexRoute,
 }
 export const routeTree = rootRouteImport

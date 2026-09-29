@@ -5,8 +5,7 @@ import { ChevronLeft } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { brandService } from "@/services/brandService";
 
-export const Route = createFileRoute("/brands/")(
-  {
+export const Route = createFileRoute("/brands/")({
   head: () => ({
     meta: [
       { title: "منتجات العناية — شركات عالمية" },
@@ -76,9 +75,15 @@ function BrandsIndex() {
                     {/* Brand Logo or initials */}
                     <div className="w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-white/80 backdrop-blur-md shadow-sm border border-white flex items-center justify-center shrink-0 overflow-hidden order-1 sm:order-2">
                       {brand.logo ? (
-                        <img src={brand.logo} alt={brand.name} className="w-full h-full object-contain" />
+                        <img
+                          src={brand.logo}
+                          alt={brand.name}
+                          className="w-full h-full object-contain"
+                        />
                       ) : (
-                        <span className="text-sm sm:text-xl font-bold text-primary">{brand.name[0]}</span>
+                        <span className="text-sm sm:text-xl font-bold text-primary">
+                          {brand.name[0]}
+                        </span>
                       )}
                     </div>
                   </div>

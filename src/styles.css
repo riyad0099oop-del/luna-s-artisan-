@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Loleta Store — نظام تصميم عضوي فاخر
+ * Luna Store — نظام تصميم عضوي فاخر
  * خمري دافئ + أخضر زيتوني ناعم + خلفية كريمية
  */
 
@@ -46,10 +46,10 @@
   --radius: 1.5rem;
 
   /* الخلفية الأساسية: أوف وايت دافئ */
-  --background: #f8f4ee;
+  --background: #FCFAF7;
 
   /* النص الأساسي: أسود ناعم / رمادي غامق */
-  --foreground: #2b2b2b;
+  --foreground: #1F2421;
 
   /* الكروت: كريمي بيج ناعم */
   --card: #f4eee6;
@@ -59,13 +59,13 @@
   --popover-foreground: #2a2a2a;
 
   /* أحمر خمري / طوبي */
-  --primary: #9e3443;
-  --primary-foreground: #f8f4ee;
+  --primary: #9B3828;
+  --primary-foreground: #FCFAF7;
   --primary-deep: #7f2735;
 
   /* أخضر زيتوني */
-  --secondary: #b8c28a;
-  --secondary-foreground: #2a2a2a;
+  --secondary: #6E7B44;
+  --secondary-foreground: #FCFAF7;
   --secondary-deep: #9da873;
 
   /* لون بيج فاتح للاكسنت */

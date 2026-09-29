@@ -6,17 +6,17 @@ import { Header } from "@/components/luna/Header";
 import { SilkReveal } from "@/components/luna/SilkReveal";
 import { ProductCard, type Product } from "@/components/luna/ProductCard";
 
-import logoUrl from "@/assets/loleta-logo.jpg";
+import logoUrl from "@/assets/luna-logo.jpg";
 import heroImg from "@/assets/product-oil.jpg";
 import productBlend from "@/assets/product-blend.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Loleta Store — منتجات العناية بالبشرة" },
+      { title: "Luna Store — منتجات العناية بالبشرة" },
       {
         name: "description",
-        content: "Loleta Store: منتجات مختارة بعناية لبشرة صحية ونضارة طبيعية كل يوم.",
+        content: "Luna Store: منتجات مختارة بعناية لبشرة صحية ونضارة طبيعية كل يوم.",
       },
     ],
   }),
@@ -80,21 +80,23 @@ import { productService } from "@/services/productService";
 
 function HomePage() {
   const { data: dbProducts } = useQuery({
-    queryKey: ['products'],
-    queryFn: productService.getAll
+    queryKey: ["products"],
+    queryFn: productService.getAll,
   });
 
-  const productsToDisplay: Product[] = dbProducts
-    ?.filter(p => p.isVisible && (p.showInFeatured || p.type === 'loleta'))
-    .slice(0, 4).map(p => ({
-      name: p.name,
-      note: p.shortDescription || "",
-      price: p.price + " ريال",
-      oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
-      image: p.mainImage || heroImg,
-      tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
-      id: p.id,
-    })) || FEATURED_PRODUCTS;
+  const productsToDisplay: Product[] =
+    dbProducts
+      ?.filter((p) => p.isVisible && (p.showInFeatured || p.type === "luna"))
+      .slice(0, 4)
+      .map((p) => ({
+        name: p.name,
+        note: p.shortDescription || "",
+        price: p.price + " ريال",
+        oldPrice: p.oldPrice ? p.oldPrice + " ريال" : undefined,
+        image: p.mainImage || heroImg,
+        tag: p.offerBadge || (p.isNew ? "جديد" : undefined),
+        id: p.id,
+      })) || FEATURED_PRODUCTS;
 
   return (
     <div className="relative min-h-screen overflow-x-hidden font-sans isolate">
@@ -140,7 +142,7 @@ function HomePage() {
               transition={{ duration: 0.8, delay: 1.5, ease }}
               className="text-3xl font-bold text-primary md:text-4xl"
             >
-              متجر لوليتا
+              متجر لونا
             </motion.h3>
 
             <motion.p
@@ -209,11 +211,7 @@ function HomePage() {
 
             {/* الصورة الرئيسية للمنتجات */}
             <div className="relative z-10 w-64 md:w-80 rounded-[3rem] bg-white overflow-hidden shadow-2xl border-4 border-white/50 p-4">
-              <img
-                src={logoUrl}
-                alt="Loleta Store"
-                className="w-full h-auto object-contain"
-              />
+              <img src={logoUrl} alt="Luna Store" className="w-full h-auto object-contain" />
             </div>
           </motion.div>
         </div>
@@ -230,8 +228,8 @@ function HomePage() {
       {/* Categories Cards - Background: Very Light Sage Green */}
       <section id="categories" className="bg-[#EEF1E3] py-24 relative z-20">
         <div className="mx-auto max-w-6xl px-5 grid gap-8 md:grid-cols-2">
-          {/* Card 1: Loleta Products */}
-          <Link to="/loleta-products">
+          {/* Card 1: Luna Products */}
+          <Link to="/luna-products">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -257,7 +255,7 @@ function HomePage() {
                   <Heart className="size-8 text-primary" strokeWidth={1.5} />
                 </div>
                 <h2 className="text-3xl font-bold md:text-4xl text-foreground mb-4">
-                  منتجات لوليتا
+                  منتجات لونا
                 </h2>
                 <p className="text-base font-medium text-muted-foreground leading-relaxed max-w-sm">
                   مجموعتنا الخاصة والحصرية المصنوعة بشغف وحب. مستحضرات عناية طبيعية تدلل بشرتك وتبرز
@@ -326,7 +324,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 1. Featured Loleta Products - Background: Soft Cream */}
+      {/* 1. Featured Luna Products - Background: Soft Cream */}
       <section className="bg-card py-24 relative z-20">
         <div className="mx-auto max-w-6xl px-5">
           <motion.div
@@ -337,14 +335,14 @@ function HomePage() {
           >
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 text-primary">
-                مختارات لوليتا
+                مختارات لونا
               </h2>
               <p className="text-muted-foreground font-medium max-w-md">
                 المنتجات الأكثر مبيعاً والأكثر طلباً لتجربة عناية استثنائية.
               </p>
             </div>
             <Link
-              to="/loleta-products"
+              to="/luna-products"
               className="inline-flex items-center gap-2 text-sm font-bold text-primary group"
             >
               عرض جميع المنتجات
@@ -468,7 +466,7 @@ function HomePage() {
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">عروض مختارة لكِ</h2>
               <p className="text-white/80 font-medium text-lg max-w-md">
-                استمتعي بخصومات حصرية ولفترة محدودة على منتجاتك المفضلة من لوليتا ومنتجات العناية
+                استمتعي بخصومات حصرية ولفترة محدودة على منتجاتك المفضلة من لونا ومنتجات العناية
                 العالمية.
               </p>
             </div>
@@ -486,7 +484,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 4. Why Loleta - Background: Soft Cream */}
+      {/* 4. Why Luna - Background: Soft Cream */}
       <section className="bg-card py-24 relative z-20">
         <div className="mx-auto max-w-6xl px-5">
           <motion.div
@@ -496,7 +494,7 @@ function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 relative inline-block">
-              لماذا لوليتا؟
+              لماذا لونا؟
               <div className="absolute -bottom-3 right-1/4 w-1/2 h-1 bg-primary/20 rounded-full" />
             </h2>
           </motion.div>
@@ -569,10 +567,10 @@ function HomePage() {
             className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
           >
             <Link
-              to="/loleta-products"
+              to="/luna-products"
               className="w-full sm:w-auto inline-flex items-center justify-center bg-primary text-white px-8 py-4 rounded-full font-bold shadow-sm hover:shadow-md hover:bg-primary-deep active:scale-95 transition-all"
             >
-              تسوقي منتجات لوليتا
+              تسوقي منتجات لونا
             </Link>
             <Link
               to="/brands"

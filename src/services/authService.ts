@@ -1,4 +1,4 @@
-import { supabase } from '../lib/supabase';
+import { supabase } from "../lib/supabase";
 
 export const authService = {
   login: async (email: string, password: string): Promise<boolean> => {
@@ -7,7 +7,7 @@ export const authService = {
       password,
     });
     if (error) {
-      throw new Error('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+      throw new Error("البريد الإلكتروني أو كلمة المرور غير صحيحة");
     }
     return !!data.session;
   },
@@ -19,7 +19,7 @@ export const authService = {
   isAuthenticated: () => {
     // Check synchronously from local storage cache
     const storageKey = `sb-rzpjurczgjzbpbstjfht-auth-token`;
-    if (typeof window === 'undefined') return false;
+    if (typeof window === "undefined") return false;
     const stored = localStorage.getItem(storageKey);
     if (!stored) return false;
     try {

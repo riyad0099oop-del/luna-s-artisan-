@@ -55,7 +55,7 @@ function ContactPage() {
               </div>
               <div>
                 <h3 className="font-bold text-foreground">البريد الإلكتروني</h3>
-                <p className="text-muted-foreground font-medium mt-1">info@loletastore.com</p>
+                <p className="text-muted-foreground font-medium mt-1">info@lunastore.com</p>
               </div>
             </div>
           </motion.div>

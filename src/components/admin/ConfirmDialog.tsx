@@ -1,5 +1,5 @@
-import { AlertCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { AlertCircle } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 interface ConfirmDialogProps {
   isOpen: boolean;
@@ -16,8 +16,8 @@ export function ConfirmDialog({
   isOpen,
   title,
   message,
-  confirmText = 'تأكيد',
-  cancelText = 'إلغاء',
+  confirmText = "تأكيد",
+  cancelText = "إلغاء",
   onConfirm,
   onCancel,
   isDestructive = true,
@@ -43,7 +43,9 @@ export function ConfirmDialog({
         >
           <div className="p-6">
             <div className="flex items-start gap-4">
-              <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${isDestructive ? 'bg-red-100 text-red-600' : 'bg-primary/10 text-primary'}`}>
+              <div
+                className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${isDestructive ? "bg-red-100 text-red-600" : "bg-primary/10 text-primary"}`}
+              >
                 <AlertCircle className="size-5" />
               </div>
               <div>
@@ -61,7 +63,7 @@ export function ConfirmDialog({
             </button>
             <button
               onClick={onConfirm}
-              className={`px-4 py-2 rounded-xl font-bold text-white transition-colors ${isDestructive ? 'bg-red-600 hover:bg-red-700' : 'bg-primary hover:bg-primary-deep'}`}
+              className={`px-4 py-2 rounded-xl font-bold text-white transition-colors ${isDestructive ? "bg-red-600 hover:bg-red-700" : "bg-primary hover:bg-primary-deep"}`}
             >
               {confirmText}
             </button>

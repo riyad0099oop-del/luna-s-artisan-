@@ -367,7 +367,7 @@ function CheckoutPage() {
                   </label>
                   <textarea
                     value={data.notes}
-                    onChange={(e) => setData(prev => ({ ...prev, notes: e.target.value }))}
+                    onChange={(e) => setData((prev) => ({ ...prev, notes: e.target.value }))}
                     placeholder="أضيفي أي ملاحظة خاصة بطلبك..."
                     rows={3}
                     className="w-full bg-[#F8F4EE] border border-border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"

@@ -38,7 +38,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Load from localStorage on mount
   useEffect(() => {
     try {
-      const stored = localStorage.getItem("loleta_cart");
+      const stored = localStorage.getItem("luna_cart");
       if (stored) {
         setItems(JSON.parse(stored));
       }
@@ -51,7 +51,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Save to localStorage when items change
   useEffect(() => {
     if (isInitialized) {
-      localStorage.setItem("loleta_cart", JSON.stringify(items));
+      localStorage.setItem("luna_cart", JSON.stringify(items));
     }
   }, [items, isInitialized]);
 

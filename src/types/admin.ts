@@ -8,7 +8,7 @@ export interface AdminProduct {
   fullDescription: string;
   price: number;
   quantity: number;
-  type: "loleta" | "care";
+  type: "luna" | "care";
   brandId?: string;
   isNew: boolean;
   isBestseller: boolean;

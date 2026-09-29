@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Twitter } from "lucide-react";
-import logoUrl from "@/assets/loleta-logo.jpg";
+import logoUrl from "@/assets/luna-logo.jpg";
 
 export function Footer() {
   return (
@@ -28,11 +28,7 @@ export function Footer() {
               to="/"
               className="inline-block mb-6 bg-white p-3 rounded-2xl shadow-lg hover:-translate-y-1 transition-transform"
             >
-              <img
-                src={logoUrl}
-                alt="Loleta Store"
-                className="h-16 w-auto object-contain"
-              />
+              <img src={logoUrl} alt="Luna Store" className="h-16 w-auto object-contain" />
             </Link>
             <p className="text-sm font-medium leading-relaxed text-white/90">
               منتجات مختارة بعناية لتمتعي ببشرة صحية ونضارة طبيعية كل يوم. الجمال العضوي بين يديك.
@@ -78,10 +74,10 @@ export function Footer() {
             <ul className="space-y-3 text-sm font-medium text-white/85">
               <li>
                 <Link
-                  to="/loleta-products"
+                  to="/luna-products"
                   className="hover:text-white transition-colors flex items-center gap-2"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/20" /> منتجات لوليتا
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/20" /> منتجات لونا
                 </Link>
               </li>
               <li>
@@ -131,25 +127,32 @@ export function Footer() {
         </div>
 
         <div className="mt-16 border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-white/80">
-          
           <div className="flex flex-col gap-2">
-            <p>© {new Date().getFullYear()} Loleta Store. جميع الحقوق محفوظة.</p>
+            <p>© {new Date().getFullYear()} Luna Store. جميع الحقوق محفوظة.</p>
             <p className="text-white/60 text-xs">
               تم التطوير بواسطة{" "}
-              <a 
-                href="https://wa.me/967714191142" 
-                target="_blank" 
+              <a
+                href="https://wa.me/967714191142"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold text-white hover:text-white/80 transition-colors inline-flex items-center gap-1"
                 title="تواصل معنا عبر واتساب"
               >
                 شركة تكنيك
-                <span dir="ltr" className="inline-block text-[10px] bg-white/10 px-1.5 py-0.5 rounded-full ml-1">+967 714191142</span>
+                <span
+                  dir="ltr"
+                  className="inline-block text-[10px] bg-white/10 px-1.5 py-0.5 rounded-full ml-1"
+                >
+                  +967 714191142
+                </span>
               </a>
             </p>
           </div>
           <div className="flex gap-4 items-center">
-            <Link to="/admin/login" className="hover:text-white transition-colors flex items-center gap-1 opacity-70 hover:opacity-100">
+            <Link
+              to="/admin/login"
+              className="hover:text-white transition-colors flex items-center gap-1 opacity-70 hover:opacity-100"
+            >
               دخول الإدارة
             </Link>
             <span className="opacity-40">|</span>

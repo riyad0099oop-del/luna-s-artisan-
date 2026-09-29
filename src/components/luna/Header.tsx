@@ -3,13 +3,13 @@ import { useState } from "react";
 import { Menu, ShoppingBag, Search, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-import logoUrl from "@/assets/loleta-logo.jpg";
+import logoUrl from "@/assets/luna-logo.jpg";
 
 import { useCart } from "@/context/CartContext";
 
 const LINKS = [
   { label: "الرئيسية", to: "/" },
-  { label: "منتجات لوليتا", to: "/loleta-products" },
+  { label: "منتجات لونا", to: "/luna-products" },
   { label: "منتجات العناية", to: "/brands" },
   { label: "العروض", to: "/offers" },
   { label: "من نحن", to: "/about" },
@@ -30,13 +30,13 @@ export function Header() {
     >
       <nav className="bg-[#F3EBDD]/90 backdrop-blur-md shadow-sm border border-[#E9DDCE] mx-auto flex max-w-6xl items-center justify-between rounded-full px-4 py-3 md:px-6">
         <Link to="/" className="flex items-center">
-            <img
-              src={logoUrl}
-              alt="Loleta Store Logo"
-              className="h-12 w-auto mix-blend-multiply object-contain"
-              loading="eager"
-            />
-          </Link>
+          <img
+            src={logoUrl}
+            alt="Luna Store Logo"
+            className="h-12 w-auto mix-blend-multiply object-contain"
+            loading="eager"
+          />
+        </Link>
 
         <ul className="hidden items-center gap-8 text-sm font-light md:flex">
           {LINKS.map((l) => (

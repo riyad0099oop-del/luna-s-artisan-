@@ -128,12 +128,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 import { CartProvider } from "../context/CartContext";
 import { CartDrawer } from "../components/luna/CartDrawer";
+import { FloatingParticles } from "../components/luna/FloatingParticles";
 import { Toaster } from "sonner";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
-  const isAdminRoute = router.state.location.pathname.startsWith('/admin');
+  const isAdminRoute = router.state.location.pathname.startsWith("/admin");
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -142,6 +143,7 @@ function RootComponent() {
         <Outlet />
         {!isAdminRoute && (
           <>
+            <FloatingParticles />
             <Footer />
             <CartDrawer />
           </>

@@ -1,5 +1,5 @@
-import { supabase } from '../lib/supabase';
-import type { AdminProduct } from '../types/admin';
+import { supabase } from "../lib/supabase";
+import type { AdminProduct } from "../types/admin";
 
 // Helper: convert DB row (snake_case) to AdminProduct (camelCase)
 function toProduct(row: any): AdminProduct {
@@ -7,10 +7,10 @@ function toProduct(row: any): AdminProduct {
     id: row.id,
     name: row.name,
     slug: row.slug,
-    mainImage: row.main_image || '',
+    mainImage: row.main_image || "",
     additionalImages: row.additional_images || [],
-    shortDescription: row.short_description || '',
-    fullDescription: row.full_description || '',
+    shortDescription: row.short_description || "",
+    fullDescription: row.full_description || "",
     price: Number(row.price),
     quantity: row.quantity,
     type: row.type,
@@ -20,7 +20,7 @@ function toProduct(row: any): AdminProduct {
     showInFeatured: row.show_in_featured,
     hasOffer: row.has_offer,
     oldPrice: row.old_price ? Number(row.old_price) : undefined,
-    offerBadge: row.offer_badge || '',
+    offerBadge: row.offer_badge || "",
     isVisible: row.is_visible,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
@@ -53,30 +53,24 @@ function toRow(product: Partial<AdminProduct>): Record<string, any> {
 export const productService = {
   getAll: async (): Promise<AdminProduct[]> => {
     const { data, error } = await supabase
-      .from('products')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .from("products")
+      .select("*")
+      .order("created_at", { ascending: false });
     if (error) throw error;
     return (data || []).map(toProduct);
   },
 
   getById: async (id: string): Promise<AdminProduct | undefined> => {
-    const { data, error } = await supabase
-      .from('products')
-      .select('*')
-      .eq('id', id)
-      .single();
+    const { data, error } = await supabase.from("products").select("*").eq("id", id).single();
     if (error) return undefined;
     return toProduct(data);
   },
 
-  create: async (product: Omit<AdminProduct, 'id' | 'createdAt' | 'updatedAt'>): Promise<AdminProduct> => {
+  create: async (
+    product: Omit<AdminProduct, "id" | "createdAt" | "updatedAt">,
+  ): Promise<AdminProduct> => {
     const row = toRow(product);
-    const { data, error } = await supabase
-      .from('products')
-      .insert(row)
-      .select()
-      .single();
+    const { data, error } = await supabase.from("products").insert(row).select().single();
     if (error) throw error;
     return toProduct(data);
   },
@@ -85,9 +79,9 @@ export const productService = {
     const row = toRow(updates);
     row.updated_at = new Date().toISOString();
     const { data, error } = await supabase
-      .from('products')
+      .from("products")
       .update(row)
-      .eq('id', id)
+      .eq("id", id)
       .select()
       .single();
     if (error) throw error;
@@ -95,10 +89,7 @@ export const productService = {
   },
 
   delete: async (id: string): Promise<boolean> => {
-    const { error } = await supabase
-      .from('products')
-      .delete()
-      .eq('id', id);
+    const { error } = await supabase.from("products").delete().eq("id", id);
     if (error) throw error;
     return true;
   },

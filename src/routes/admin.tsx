@@ -1,9 +1,9 @@
-import { createFileRoute, Outlet, useNavigate, useLocation } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
-import { authService } from '../services/authService';
-import { AdminLayout } from '../components/admin/AdminLayout';
+import { createFileRoute, Outlet, useNavigate, useLocation } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { authService } from "../services/authService";
+import { AdminLayout } from "../components/admin/AdminLayout";
 
-export const Route = createFileRoute('/admin')({
+export const Route = createFileRoute("/admin")({
   component: AdminGuard,
 });
 
@@ -15,12 +15,12 @@ function AdminGuard() {
   useEffect(() => {
     const checkAuth = async () => {
       const isAuth = authService.isAuthenticated();
-      const isLoginRoute = location.pathname.includes('/login');
-      
+      const isLoginRoute = location.pathname.includes("/login");
+
       if (!isAuth && !isLoginRoute) {
-        navigate({ to: '/admin/login' });
+        navigate({ to: "/admin/login" });
       } else if (isAuth && isLoginRoute) {
-        navigate({ to: '/admin' });
+        navigate({ to: "/admin" });
       }
       setIsChecking(false);
     };
@@ -28,11 +28,15 @@ function AdminGuard() {
   }, [location.pathname, navigate]);
 
   if (isChecking) {
-    return <div className="min-h-screen flex items-center justify-center bg-background text-primary font-bold">???? ???????...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background text-primary font-bold">
+        ???? ???????...
+      </div>
+    );
   }
 
   // The login route doesn't need the AdminLayout
-  if (location.pathname.includes('/login')) {
+  if (location.pathname.includes("/login")) {
     return <Outlet />;
   }
 

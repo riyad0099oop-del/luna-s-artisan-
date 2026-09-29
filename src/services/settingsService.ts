@@ -1,31 +1,31 @@
-import { supabase } from '../lib/supabase';
-import type { AdminStoreSettings, AdminPaymentMethod } from '../types/admin';
+import { supabase } from "../lib/supabase";
+import type { AdminStoreSettings, AdminPaymentMethod } from "../types/admin";
 
 export const settingsService = {
   getStoreSettings: async (): Promise<AdminStoreSettings & { id: string }> => {
     const { data, error } = await supabase
-      .from('store_settings')
-      .select('*')
-      .eq('id', 'global')
+      .from("store_settings")
+      .select("*")
+      .eq("id", "global")
       .single();
-    
+
     if (error) throw error;
-    
+
     return {
       id: data.id,
-      storeName: data.store_name || '',
-      logo: data.logo || '',
-      favicon: data.favicon || '',
-      whatsapp: data.whatsapp || '',
-      phone: data.phone || '',
-      email: data.email || '',
-      instagram: data.instagram || '',
-      address: data.address || '',
-      currency: data.currency || '',
-      copyright: data.copyright || '',
-      aboutText: data.about_text || '',
-      homeHeroTitle: data.home_hero_title || '',
-      homeHeroSubtitle: data.home_hero_subtitle || ''
+      storeName: data.store_name || "",
+      logo: data.logo || "",
+      favicon: data.favicon || "",
+      whatsapp: data.whatsapp || "",
+      phone: data.phone || "",
+      email: data.email || "",
+      instagram: data.instagram || "",
+      address: data.address || "",
+      currency: data.currency || "",
+      copyright: data.copyright || "",
+      aboutText: data.about_text || "",
+      homeHeroTitle: data.home_hero_title || "",
+      homeHeroSubtitle: data.home_hero_subtitle || "",
     };
   },
 
@@ -44,35 +44,35 @@ export const settingsService = {
     if (updates.aboutText !== undefined) row.about_text = updates.aboutText;
     if (updates.homeHeroTitle !== undefined) row.home_hero_title = updates.homeHeroTitle;
     if (updates.homeHeroSubtitle !== undefined) row.home_hero_subtitle = updates.homeHeroSubtitle;
-    
+
     row.updated_at = new Date().toISOString();
 
     const { data, error } = await supabase
-      .from('store_settings')
+      .from("store_settings")
       .update(row)
-      .eq('id', 'global')
+      .eq("id", "global")
       .select()
       .single();
-      
+
     if (error) throw error;
     return data;
   },
 
   getPaymentMethods: async (): Promise<AdminPaymentMethod[]> => {
     const { data, error } = await supabase
-      .from('payment_methods')
-      .select('*')
-      .order('created_at', { ascending: true });
-      
+      .from("payment_methods")
+      .select("*")
+      .order("created_at", { ascending: true });
+
     if (error) throw error;
-    
-    return (data || []).map(row => ({
+
+    return (data || []).map((row) => ({
       id: row.id,
       name: row.name,
       logo: row.logo || undefined,
       accountNumber: row.account_number,
       accountType: row.account_type || undefined,
-      isVisible: row.is_visible
+      isVisible: row.is_visible,
     }));
   },
 
@@ -85,13 +85,13 @@ export const settingsService = {
     if (updates.isVisible !== undefined) row.is_visible = updates.isVisible;
 
     const { data, error } = await supabase
-      .from('payment_methods')
+      .from("payment_methods")
       .update(row)
-      .eq('id', id)
+      .eq("id", id)
       .select()
       .single();
-      
+
     if (error) throw error;
     return data;
-  }
+  },
 };
