@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Header } from "@/components/luna/Header";
+import { Header } from "@/components/loleta/Header";
 import heroImg from "@/assets/product-blend.jpg";
 
 export const Route = createFileRoute("/about")({
@@ -22,7 +22,7 @@ function AboutPage() {
             <div className="absolute inset-0 bg-primary/10 rounded-[3rem] translate-x-4 translate-y-4" />
             <img
               src={heroImg}
-              alt="عن لونا"
+              alt="عن لوليتا"
               className="relative z-10 w-full h-full object-cover rounded-[3rem]"
             />
           </motion.div>
@@ -32,10 +32,10 @@ function AboutPage() {
             transition={{ duration: 0.8 }}
             className="flex flex-col gap-6"
           >
-            <h1 className="text-4xl font-bold text-primary">عن Luna Store</h1>
+            <h1 className="text-4xl font-bold text-primary">عن Loleta Store</h1>
             <p className="text-muted-foreground font-medium leading-relaxed">
-              تأسس متجر لونا بشغف تقديم الأفضل في عالم العناية بالبشرة والجمال العضوي. نحن نؤمن بأن
-              الطبيعة تحمل أسرار النضارة الحقيقية، ولذلك ننتقي كل منتج بعناية فائقة لضمان الجودة
+              تأسس متجر لوليتا بشغف تقديم الأفضل في عالم العناية بالبشرة والجمال العضوي. نحن نؤمن
+              بأن الطبيعة تحمل أسرار النضارة الحقيقية، ولذلك ننتقي كل منتج بعناية فائقة لضمان الجودة
               والفعالية.
             </p>
             <h2 className="text-2xl font-bold text-foreground mt-4">رؤيتنا</h2>
@@ -43,7 +43,7 @@ function AboutPage() {
               أن نكون الوجهة الأولى لكل امرأة تبحث عن منتجات عناية آمنة، طبيعية، وفاخرة تدلل بها
               بشرتها وتعزز ثقتها بجمالها.
             </p>
-            <h2 className="text-2xl font-bold text-foreground mt-4">لماذا لونا؟</h2>
+            <h2 className="text-2xl font-bold text-foreground mt-4">لماذا لوليتا؟</h2>
             <ul className="list-disc list-inside text-muted-foreground font-medium space-y-2">
               <li>منتجات عضوية خالية من المواد الضارة.</li>
               <li>اختيارات حصرية من أفضل العلامات العالمية.</li>

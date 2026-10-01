@@ -248,7 +248,7 @@ function SettingsManager() {
                 value={settings.homeHeroTitle || ""}
                 onChange={(e) => updateSettingsMutation.mutate({ homeHeroTitle: e.target.value })}
                 className="w-full bg-[#F8F4EE] rounded-xl px-4 py-3 border border-border focus:ring-2 focus:ring-primary/20 outline-none"
-                placeholder="مثال: لونا ستور، حيث الأناقة"
+                placeholder="مثال: لوليتا ستور، حيث الأناقة"
               />
             </div>
             <div>

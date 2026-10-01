@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Header } from "@/components/luna/Header";
+import { Header } from "@/components/loleta/Header";
 import { ChevronLeft } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { brandService } from "@/services/brandService";

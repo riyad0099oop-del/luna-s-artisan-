@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Twitter } from "lucide-react";
-import logoUrl from "@/assets/luna-logo.jpg";
+import logoUrl from "@/assets/loleta-logo.jpg";
 
 export function Footer() {
   return (
@@ -28,7 +28,7 @@ export function Footer() {
               to="/"
               className="inline-block mb-6 bg-white p-3 rounded-2xl shadow-lg hover:-translate-y-1 transition-transform"
             >
-              <img src={logoUrl} alt="Luna Store" className="h-16 w-auto object-contain" />
+              <img src={logoUrl} alt="Loleta Store" className="h-16 w-auto object-contain" />
             </Link>
             <p className="text-sm font-medium leading-relaxed text-white/90">
               منتجات مختارة بعناية لتمتعي ببشرة صحية ونضارة طبيعية كل يوم. الجمال العضوي بين يديك.
@@ -74,10 +74,10 @@ export function Footer() {
             <ul className="space-y-3 text-sm font-medium text-white/85">
               <li>
                 <Link
-                  to="/luna-products"
+                  to="/loleta-products"
                   className="hover:text-white transition-colors flex items-center gap-2"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/20" /> منتجات لونا
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/20" /> منتجات لوليتا
                 </Link>
               </li>
               <li>
@@ -128,7 +128,7 @@ export function Footer() {
 
         <div className="mt-16 border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-white/80">
           <div className="flex flex-col gap-2">
-            <p>© {new Date().getFullYear()} Luna Store. جميع الحقوق محفوظة.</p>
+            <p>© {new Date().getFullYear()} Loleta Store. جميع الحقوق محفوظة.</p>
             <p className="text-white/60 text-xs">
               تم التطوير بواسطة{" "}
               <a

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Header } from "@/components/luna/Header";
-import { ProductCard, type Product } from "@/components/luna/ProductCard";
+import { Header } from "@/components/loleta/Header";
+import { ProductCard, type Product } from "@/components/loleta/ProductCard";
 
 import productOil from "@/assets/product-oil.jpg";
 import productBlend from "@/assets/product-blend.jpg";
@@ -86,7 +86,7 @@ function OffersPage() {
 
         <section className="mb-20">
           <h2 className="text-2xl font-bold mb-8 text-foreground relative inline-block">
-            عروض منتجات لونا
+            عروض منتجات لوليتا
             <div className="absolute -bottom-2 right-0 w-12 h-1 bg-primary rounded-full" />
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">

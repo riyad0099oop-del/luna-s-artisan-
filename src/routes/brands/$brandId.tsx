@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Header } from "@/components/luna/Header";
-import { ProductCard, type Product } from "@/components/luna/ProductCard";
+import { Header } from "@/components/loleta/Header";
+import { ProductCard, type Product } from "@/components/loleta/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import { productService } from "@/services/productService";
 import { brandService } from "@/services/brandService";

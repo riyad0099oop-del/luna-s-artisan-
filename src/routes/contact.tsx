@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Header } from "@/components/luna/Header";
+import { Header } from "@/components/loleta/Header";
 import { Mail, Phone, MessageCircle, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
@@ -55,7 +55,7 @@ function ContactPage() {
               </div>
               <div>
                 <h3 className="font-bold text-foreground">البريد الإلكتروني</h3>
-                <p className="text-muted-foreground font-medium mt-1">info@lunastore.com</p>
+                <p className="text-muted-foreground font-medium mt-1">info@loletastore.com</p>
               </div>
             </div>
           </motion.div>

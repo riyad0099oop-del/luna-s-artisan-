@@ -35,8 +35,8 @@ function DashboardOverview() {
       bg: "bg-primary/10",
     },
     {
-      label: "منتجات لونا",
-      value: products.filter((p) => p.type === "luna").length,
+      label: "منتجات لوليتا",
+      value: products.filter((p) => p.type === "loleta").length,
       icon: Package,
       color: "text-pink-500",
       bg: "bg-pink-50",
@@ -82,7 +82,7 @@ function DashboardOverview() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold text-foreground">لوحة القيادة</h1>
-        <p className="text-muted-foreground mt-2">مرحباً بك في لوحة تحكم متجر لونا</p>
+        <p className="text-muted-foreground mt-2">مرحباً بك في لوحة تحكم متجر لوليتا</p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

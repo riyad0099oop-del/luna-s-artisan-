@@ -1,24 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Header } from "@/components/luna/Header";
-import { ProductCard, type Product } from "@/components/luna/ProductCard";
+import { Header } from "@/components/loleta/Header";
+import { ProductCard, type Product } from "@/components/loleta/ProductCard";
 
 import productCone from "@/assets/product-cone.jpg";
 import productBlend from "@/assets/product-blend.jpg";
 import productOil from "@/assets/product-oil.jpg";
 import productSoap from "@/assets/product-soap.jpg";
 
-export const Route = createFileRoute("/luna-products")({
+export const Route = createFileRoute("/loleta-products")({
   head: () => ({
     meta: [
-      { title: "منتجات لونا — Luna Store" },
+      { title: "منتجات لوليتا — Loleta Store" },
       {
         name: "description",
-        content: "اكتشفي منتجات Luna الخاصة والمميزة للعناية بالبشرة والجمال الطبيعي.",
+        content: "اكتشفي منتجات Loleta الخاصة والمميزة للعناية بالبشرة والجمال الطبيعي.",
       },
     ],
   }),
-  component: LunaProducts,
+  component: LoletaProducts,
 });
 
 const PRODUCTS: Product[] = [
@@ -53,7 +53,7 @@ const PRODUCTS: Product[] = [
 import { useQuery } from "@tanstack/react-query";
 import { productService } from "@/services/productService";
 
-function LunaProducts() {
+function LoletaProducts() {
   const { data: dbProducts } = useQuery({
     queryKey: ["products"],
     queryFn: productService.getAll,
@@ -61,7 +61,7 @@ function LunaProducts() {
 
   const productsToDisplay: Product[] =
     dbProducts
-      ?.filter((p) => p.type === "luna" && p.isVisible)
+      ?.filter((p) => p.type === "loleta" && p.isVisible)
       .map((p) => ({
         name: p.name,
         note: p.shortDescription || "",
@@ -84,7 +84,7 @@ function LunaProducts() {
           className="mb-12 text-center md:text-start"
         >
           <h1 className="text-3xl font-light tracking-tight md:text-5xl">
-            منتجات <span className="text-secondary">لونا</span>
+            منتجات <span className="text-secondary">لوليتا</span>
           </h1>
           <p className="mt-4 text-sm font-light leading-relaxed text-muted-foreground md:max-w-xl md:text-base">
             مجموعتنا الحصرية من المنتجات المصنوعة بكل حب واهتمام لتبرز جمالك الطبيعي وتحافظ على

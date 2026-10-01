@@ -15,7 +15,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BranchesRouteImport } from './routes/branches'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as LunaProductsRouteImport } from './routes/luna-products'
+import { Route as LoletaProductsRouteImport } from './routes/loleta-products'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminBranchesRouteImport } from './routes/admin/branches'
@@ -59,9 +59,9 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LunaProductsRoute = LunaProductsRouteImport.update({
-  id: '/luna-products',
-  path: '/luna-products',
+const LoletaProductsRoute = LoletaProductsRouteImport.update({
+  id: '/loleta-products',
+  path: '/loleta-products',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OffersRoute = OffersRouteImport.update({
@@ -133,7 +133,7 @@ export interface FileRoutesByFullPath {
   '/branches': typeof BranchesRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/luna-products': typeof LunaProductsRoute
+  '/loleta-products': typeof LoletaProductsRoute
   '/offers': typeof OffersRoute
   '/admin/branches': typeof AdminBranchesRoute
   '/admin/brands': typeof AdminBrandsRoute
@@ -153,7 +153,7 @@ export interface FileRoutesByTo {
   '/branches': typeof BranchesRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/luna-products': typeof LunaProductsRoute
+  '/loleta-products': typeof LoletaProductsRoute
   '/offers': typeof OffersRoute
   '/admin/branches': typeof AdminBranchesRoute
   '/admin/brands': typeof AdminBrandsRoute
@@ -175,7 +175,7 @@ export interface FileRoutesById {
   '/branches': typeof BranchesRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/luna-products': typeof LunaProductsRoute
+  '/loleta-products': typeof LoletaProductsRoute
   '/offers': typeof OffersRoute
   '/admin/branches': typeof AdminBranchesRoute
   '/admin/brands': typeof AdminBrandsRoute
@@ -198,7 +198,7 @@ export interface FileRouteTypes {
     | '/branches'
     | '/checkout'
     | '/contact'
-    | '/luna-products'
+    | '/loleta-products'
     | '/offers'
     | '/admin/branches'
     | '/admin/brands'
@@ -218,7 +218,7 @@ export interface FileRouteTypes {
     | '/branches'
     | '/checkout'
     | '/contact'
-    | '/luna-products'
+    | '/loleta-products'
     | '/offers'
     | '/admin/branches'
     | '/admin/brands'
@@ -239,7 +239,7 @@ export interface FileRouteTypes {
     | '/branches'
     | '/checkout'
     | '/contact'
-    | '/luna-products'
+    | '/loleta-products'
     | '/offers'
     | '/admin/branches'
     | '/admin/brands'
@@ -261,7 +261,7 @@ export interface RootRouteChildren {
   BranchesRoute: typeof BranchesRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
-  LunaProductsRoute: typeof LunaProductsRoute
+  LoletaProductsRoute: typeof LoletaProductsRoute
   OffersRoute: typeof OffersRoute
   BrandsBrandIdRoute: typeof BrandsBrandIdRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
@@ -312,11 +312,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/luna-products': {
-      id: '/luna-products'
-      path: '/luna-products'
-      fullPath: '/luna-products'
-      preLoaderRoute: typeof LunaProductsRouteImport
+    '/loleta-products': {
+      id: '/loleta-products'
+      path: '/loleta-products'
+      fullPath: '/loleta-products'
+      preLoaderRoute: typeof LoletaProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/offers': {
@@ -437,7 +437,7 @@ const rootRouteChildren: RootRouteChildren = {
   BranchesRoute: BranchesRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
-  LunaProductsRoute: LunaProductsRoute,
+  LoletaProductsRoute: LoletaProductsRoute,
   OffersRoute: OffersRoute,
   BrandsBrandIdRoute: BrandsBrandIdRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,

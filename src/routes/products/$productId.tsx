@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Header } from "@/components/luna/Header";
+import { Header } from "@/components/loleta/Header";
 import { useQuery } from "@tanstack/react-query";
 import { productService } from "@/services/productService";
 import { useCart } from "@/context/CartContext";
@@ -82,7 +82,7 @@ function ProductDetailsPage() {
             الرئيسية
           </Link>
           <ChevronRight className="size-4 mx-2" />
-          <Link to="/luna-products" className="hover:text-primary transition-colors">
+          <Link to="/loleta-products" className="hover:text-primary transition-colors">
             المنتجات
           </Link>
           <ChevronRight className="size-4 mx-2" />

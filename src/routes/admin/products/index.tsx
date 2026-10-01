@@ -70,7 +70,7 @@ function ProductsList() {
             className="bg-[#F8F4EE] border border-border rounded-xl px-4 py-2 focus:outline-none font-bold text-sm"
           >
             <option value="all">جميع الأنواع</option>
-            <option value="luna">منتجات لونا</option>
+            <option value="loleta">منتجات لوليتا</option>
             <option value="care">منتجات العناية</option>
           </select>
         </div>
@@ -121,9 +121,9 @@ function ProductsList() {
                       </div>
                     </td>
                     <td className="p-4">
-                      {product.type === "luna" ? (
+                      {product.type === "loleta" ? (
                         <span className="text-pink-600 font-bold bg-pink-50 px-2 py-1 rounded-lg text-xs">
-                          لونا
+                          لوليتا
                         </span>
                       ) : (
                         <span className="text-purple-600 font-bold bg-purple-50 px-2 py-1 rounded-lg text-xs">

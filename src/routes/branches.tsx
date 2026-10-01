@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Header } from "@/components/luna/Header";
+import { Header } from "@/components/loleta/Header";
 import { MapPin, Phone, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/branches")({

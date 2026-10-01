@@ -26,7 +26,7 @@ function ProductForm() {
     fullDescription: "",
     price: 0,
     quantity: 1,
-    type: "luna" as "luna" | "care",
+    type: "loleta" as "loleta" | "care",
     brandId: "",
     isNew: false,
     isBestseller: false,
@@ -170,7 +170,7 @@ function ProductForm() {
                   onChange={(e) => setFormData({ ...formData, type: e.target.value as any })}
                   className="w-full bg-[#F8F4EE] border border-border rounded-xl px-4 py-2 focus:ring-2 focus:ring-primary/20 outline-none"
                 >
-                  <option value="luna">منتجات لونا</option>
+                  <option value="loleta">منتجات لوليتا</option>
                   <option value="care">منتجات العناية (شركات)</option>
                 </select>
               </div>

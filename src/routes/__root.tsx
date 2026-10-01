@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { Footer } from "../components/luna/Footer";
+import { Footer } from "../components/loleta/Footer";
 
 function NotFoundComponent() {
   return (
@@ -78,12 +78,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Luna Store — حناء طبيعية ومستحضرات عضوية" },
+      { title: "Loleta Store — حناء طبيعية ومستحضرات عضوية" },
       {
         name: "description",
-        content: "Luna Store: حناء طبيعية، خلطات نقش فاخرة، ومستحضرات تجميل عضوية.",
+        content: "Loleta Store: حناء طبيعية، خلطات نقش فاخرة، ومستحضرات تجميل عضوية.",
       },
-      { property: "og:title", content: "Luna Store" },
+      { property: "og:title", content: "Loleta Store" },
       {
         property: "og:description",
         content: "حناء طبيعية، خلطات نقش فاخرة، ومستحضرات تجميل عضوية.",
@@ -127,8 +127,8 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 import { CartProvider } from "../context/CartContext";
-import { CartDrawer } from "../components/luna/CartDrawer";
-import { FloatingParticles } from "../components/luna/FloatingParticles";
+import { CartDrawer } from "../components/loleta/CartDrawer";
+import { FloatingParticles } from "../components/loleta/FloatingParticles";
 import { Toaster } from "sonner";
 
 function RootComponent() {

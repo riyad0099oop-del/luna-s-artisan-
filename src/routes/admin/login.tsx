@@ -62,7 +62,7 @@ function AdminLogin() {
                 dir="ltr"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@luna.com"
+                placeholder="admin@loleta.com"
                 className="w-full bg-[#F8F4EE] border border-border rounded-xl pr-10 pl-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 text-right transition-all"
               />
             </div>

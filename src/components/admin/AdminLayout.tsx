@@ -34,7 +34,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       <div className="p-6">
-        <h2 className="text-2xl font-bold text-primary">Luna Admin</h2>
+        <h2 className="text-2xl font-bold text-primary">Loleta Admin</h2>
         <p className="text-xs text-muted-foreground mt-1">إدارة المحتوى</p>
       </div>
 
@@ -82,7 +82,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
 
       {/* Mobile Header */}
       <header className="md:hidden flex items-center justify-between bg-white border-b border-border p-4 sticky top-0 z-30">
-        <h2 className="font-bold text-primary text-lg">Luna Admin</h2>
+        <h2 className="font-bold text-primary text-lg">Loleta Admin</h2>
         <button
           onClick={() => setIsMobileMenuOpen(true)}
           className="p-2 text-foreground bg-primary/5 rounded-lg"
