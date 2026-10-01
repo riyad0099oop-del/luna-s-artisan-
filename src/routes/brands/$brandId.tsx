@@ -16,20 +16,20 @@ function BrandPage() {
   const { brandId } = Route.useParams();
 
   // جلب بيانات الشركة من قاعدة البيانات
-  const { data: brand } = useQuery({
+  const { data: brand, isLoading: isBrandLoading } = useQuery({
     queryKey: ["brand", brandId],
-    queryFn: () => brandService.getById(brandId),
+    queryFn: () => brandService.getBySlugOrId(brandId),
   });
 
   // جلب المنتجات المرتبطة بهذه الشركة
-  const { data: allProducts = [], isLoading } = useQuery({
+  const { data: allProducts = [], isLoading: isProductsLoading } = useQuery({
     queryKey: ["products"],
     queryFn: productService.getAll,
   });
 
   // تصفية المنتجات الخاصة بهذه الشركة (type === 'care' و brandId يطابق)
   const brandProducts: Product[] = allProducts
-    .filter((p) => p.type === "care" && p.brandId === brandId && p.isVisible)
+    .filter((p) => p.type === "care" && brand?.id && p.brandId === brand.id && p.isVisible)
     .map((p) => ({
       name: p.name,
       note: p.shortDescription || "",
@@ -41,6 +41,8 @@ function BrandPage() {
     }));
 
   const brandName = brand?.name || brandId.replace(/-/g, " ");
+
+  const isLoading = isBrandLoading || isProductsLoading;
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream-aura pb-20">
