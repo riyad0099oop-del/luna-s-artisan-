@@ -54,9 +54,9 @@ function ProductForm() {
       });
       toast.success("تم إضافة المنتج بنجاح");
       navigate({ to: "/admin/products" });
-    } catch (err: any) {
+    } catch (err) {
       console.error("Save error:", err);
-      toast.error(err.message || "حدث خطأ أثناء الحفظ");
+      toast.error((err as Error).message || "حدث خطأ أثناء الحفظ");
     } finally {
       setIsSaving(false);
     }

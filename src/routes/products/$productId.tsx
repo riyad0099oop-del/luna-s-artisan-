@@ -54,7 +54,7 @@ function ProductDetailsPage() {
 
   const priceFormatted = product.price + " ريال";
   const oldPriceFormatted = product.oldPrice ? product.oldPrice + " ريال" : undefined;
-  
+
   // Format for the cart
   const cartProduct = {
     id: product.id,
@@ -73,14 +73,18 @@ function ProductDetailsPage() {
 
       <main className="mx-auto max-w-6xl px-5 pt-32 md:pt-40">
         {/* Breadcrumbs */}
-        <motion.nav 
+        <motion.nav
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center text-sm text-muted-foreground mb-8"
         >
-          <Link to="/" className="hover:text-primary transition-colors">الرئيسية</Link>
+          <Link to="/" className="hover:text-primary transition-colors">
+            الرئيسية
+          </Link>
           <ChevronRight className="size-4 mx-2" />
-          <Link to="/luna-products" className="hover:text-primary transition-colors">المنتجات</Link>
+          <Link to="/luna-products" className="hover:text-primary transition-colors">
+            المنتجات
+          </Link>
           <ChevronRight className="size-4 mx-2" />
           <span className="text-foreground font-medium truncate">{product.name}</span>
         </motion.nav>
@@ -121,7 +125,7 @@ function ProductDetailsPage() {
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-3 leading-tight">
               {product.name}
             </h1>
-            
+
             {product.shortDescription && (
               <p className="text-lg text-muted-foreground mb-6 font-medium">
                 {product.shortDescription}
@@ -168,16 +172,17 @@ function ProductDetailsPage() {
                   </AccordionContent>
                 </AccordionItem>
               )}
-              
+
               <AccordionItem value="usage">
                 <AccordionTrigger className="text-lg font-bold text-foreground">
                   طريقة الاستخدام
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed text-base">
-                  يوضع على منطقة نظيفة وجافة، ثم يدلك بلطف حتى يُمتص تماماً. يُنصح باستخدامه بشكل يومي للحصول على أفضل النتائج ولمسة فخمة تليق بك.
+                  يوضع على منطقة نظيفة وجافة، ثم يدلك بلطف حتى يُمتص تماماً. يُنصح باستخدامه بشكل
+                  يومي للحصول على أفضل النتائج ولمسة فخمة تليق بك.
                 </AccordionContent>
               </AccordionItem>
-              
+
               <AccordionItem value="shipping">
                 <AccordionTrigger className="text-lg font-bold text-foreground">
                   سياسة الشحن والاسترجاع

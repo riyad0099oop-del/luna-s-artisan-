@@ -254,9 +254,7 @@ function HomePage() {
                 <div className="inline-flex rounded-2xl bg-[#F3E4E2] p-4 shadow-sm mb-8 border border-white">
                   <Heart className="size-8 text-primary" strokeWidth={1.5} />
                 </div>
-                <h2 className="text-3xl font-bold md:text-4xl text-foreground mb-4">
-                  منتجات لونا
-                </h2>
+                <h2 className="text-3xl font-bold md:text-4xl text-foreground mb-4">منتجات لونا</h2>
                 <p className="text-base font-medium text-muted-foreground leading-relaxed max-w-sm">
                   مجموعتنا الخاصة والحصرية المصنوعة بشغف وحب. مستحضرات عناية طبيعية تدلل بشرتك وتبرز
                   جمالك الأصيل.

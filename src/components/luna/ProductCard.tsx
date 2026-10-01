@@ -21,7 +21,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product, index }: ProductCardProps) {
   const { addToCart } = useCart();
-  
+
   // 3D Tilt Effect
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -54,7 +54,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // Only navigate if we have a product ID and the click was not on the "Add to cart" button
     if (product.id) {
-      navigate({ to: '/products/$productId', params: { productId: product.id } });
+      navigate({ to: "/products/$productId", params: { productId: product.id } });
     }
   };
 
@@ -71,12 +71,12 @@ export function ProductCard({ product, index }: ProductCardProps) {
         rotateX,
         rotateY,
         transformStyle: "preserve-3d",
-        cursor: product.id ? "pointer" : "default"
+        cursor: product.id ? "pointer" : "default",
       }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className="group relative flex flex-col rounded-[1.5rem] bg-card p-3 sm:p-4 shadow-sm border border-border/50 hover:shadow-float transition-all duration-300 active:shadow-sm"
     >
-      <div 
+      <div
         style={{ transform: "translateZ(30px)" }}
         className="relative mb-3 sm:mb-4 aspect-[4/5] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-muted/40 isolate"
       >

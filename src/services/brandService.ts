@@ -48,15 +48,23 @@ export const brandService = {
 
   getBySlugOrId: async (identifier: string): Promise<AdminBrand | undefined> => {
     // Try by slug first
-    let { data, error } = await supabase.from("brands").select("*").eq("slug", identifier).single();
-    
+    const { data, error } = await supabase
+      .from("brands")
+      .select("*")
+      .eq("slug", identifier)
+      .single();
+
     // If not found by slug, try by ID (if it looks like a UUID or just blindly try)
     if (error || !data) {
-      const { data: idData, error: idError } = await supabase.from("brands").select("*").eq("id", identifier).single();
+      const { data: idData, error: idError } = await supabase
+        .from("brands")
+        .select("*")
+        .eq("id", identifier)
+        .single();
       if (idError || !idData) return undefined;
       return toBrand(idData);
     }
-    
+
     return toBrand(data);
   },
 

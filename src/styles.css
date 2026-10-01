@@ -46,10 +46,10 @@
   --radius: 1.5rem;
 
   /* الخلفية الأساسية: أوف وايت دافئ */
-  --background: #FCFAF7;
+  --background: #fcfaf7;
 
   /* النص الأساسي: أسود ناعم / رمادي غامق */
-  --foreground: #1F2421;
+  --foreground: #1f2421;
 
   /* الكروت: كريمي بيج ناعم */
   --card: #f4eee6;
@@ -59,13 +59,13 @@
   --popover-foreground: #2a2a2a;
 
   /* أحمر خمري / طوبي */
-  --primary: #9B3828;
-  --primary-foreground: #FCFAF7;
+  --primary: #9b3828;
+  --primary-foreground: #fcfaf7;
   --primary-deep: #7f2735;
 
   /* أخضر زيتوني */
-  --secondary: #6E7B44;
-  --secondary-foreground: #FCFAF7;
+  --secondary: #6e7b44;
+  --secondary-foreground: #fcfaf7;
   --secondary-deep: #9da873;
 
   /* لون بيج فاتح للاكسنت */

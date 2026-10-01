@@ -34,8 +34,8 @@ function AboutPage() {
           >
             <h1 className="text-4xl font-bold text-primary">عن Luna Store</h1>
             <p className="text-muted-foreground font-medium leading-relaxed">
-              تأسس متجر لونا بشغف تقديم الأفضل في عالم العناية بالبشرة والجمال العضوي. نحن نؤمن
-              بأن الطبيعة تحمل أسرار النضارة الحقيقية، ولذلك ننتقي كل منتج بعناية فائقة لضمان الجودة
+              تأسس متجر لونا بشغف تقديم الأفضل في عالم العناية بالبشرة والجمال العضوي. نحن نؤمن بأن
+              الطبيعة تحمل أسرار النضارة الحقيقية، ولذلك ننتقي كل منتج بعناية فائقة لضمان الجودة
               والفعالية.
             </p>
             <h2 className="text-2xl font-bold text-foreground mt-4">رؤيتنا</h2>
